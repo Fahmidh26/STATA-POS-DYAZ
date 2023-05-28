@@ -12,6 +12,7 @@ use App\Models\Sales;
 use App\Models\SalesItem;
 use App\Models\SalesPaymentItem;
 use App\Models\TodaysProduction;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -26,21 +27,14 @@ class SalesController extends Controller
         // $inventory = TodaysProduction::sum('qty');
         $acidProducts = AcidProduct::find(1);
         // $acidProducts = AcidProduct::orderBy('product_name','ASC')->first();
-        $products = AcidProduct::orderBy('id','ASC')->get();
+        $products = Product::where('qty','>',0)->orderBy('product_name','ASC')->get();
         return view('admin.Backend.Sales.sales_form', compact('customers','banks','acidProducts','products'));
     }
 
     public function SalesStore(Request $request)
     {
-        // $request->validate([
-    	// 	'supplier_id' => 'required',
-    	// 	'chalan' => 'required',
-        //     'quoDate' => 'required',
-    	// ],[
-    	// 	'customer_id.required' => 'Please Select a Customer',
-        //     'quoDate.required' => 'Please Enter Quotation Date',
-        //     'expDate.required' => 'Please Enter Quotation Expiry Date',
-    	// ]);
+
+        $admin = Auth::guard('admin')->user();
 
         $sale_id = Sales::insertGetId([
             'customer_id' => $request->customer_id,
@@ -51,6 +45,7 @@ class SalesController extends Controller
             'discount_flat' => $request->dflat,
             'discount_per' => $request->dper,
             'total_vat' => $request->vper,
+            'user_id' => $admin->id,
             'p_paid_amount' => $request->paidamount,
             'due_amount' => $request->dueamount,
             'created_at' => Carbon::now(),   
@@ -59,45 +54,86 @@ class SalesController extends Controller
 
         
         $item = $request->input('item');
-        // $stock = $request->input('stock');
+        $stock = $request->input('stock');
         // $batch = $request->input('batch');
         $qty = $request->input('qnty');
         $rate = $request->input('rate');
         $rateType = $request->input('rateType');
         $amount = $request->input('amount');
 
-         // Advance
-         $totalQty = array_sum($qty);
-         $rate = array_shift($rate);
-         $rateType = array_shift($rateType);
-        
-       
         foreach ($item as $key => $value) {
+
+            $matchProduct = Product::where('id',$value)->get();
+
+            $productIDs = $matchProduct->pluck('id')->toArray();
+            
+            foreach($productIDs as $product) {
+                // dd($product);
+                // print($product.',');
+                $match1Product = Product::where('id',$product)->get();
+
+                if(isset($product->qty) && $product->qty == null){
+                    Product::findOrFail($product)->update([
+                        'qty' => $qty[$key],
+                    ]);
+                }else{
+                    Product::findOrFail($product)->update([
+                        'qty' => $stock[$key] - $qty[$key] ,
+                    ]);
+                }
+            }
+
 
             SalesItem::create([
                 'product_id' => $value,
-                'sale_id' => $sale_id,
+                'sales_id' => $sale_id,
                 'qty' => $qty[$key],
                 'rate' => $rate[$key],
                 'rateType' => $rateType[$key],
                 'amount' => $amount[$key],
+
+
             ]);
-        }
+        }   
 
+
+        //  // Advance
+        //  $totalQty = array_sum($qty);
+        //  $rate = array_shift($rate);
+        //  $rateType = array_shift($rateType);
+        
        
-        // Retrieve the sales record by ID
-        $sales = Sales::find($sale_id);
-        $paidAmount = $sales->p_paid_amount;
+        // foreach ($item as $key => $value) {
 
-        // Retrieve the customer ID from the sales record
-        $customer_id = $sales->customer->id;
-        $customer = Customer::find($customer_id);
-        $customer->balance += $paidAmount;
-        $customer->advance += $totalQty;
-        $customer->due += $totalQty;
-        $customer->rate = $rate;
-        $customer->rateType = $rateType;
-        $customer->save();
+        //     SalesItem::create([
+        //         'product_id' => $value,
+        //         'sales_id' => $sale_id,
+        //         'qty' => $qty[$key],
+        //         'rate' => $rate[$key],
+        //         'rateType' => $rateType[$key],
+        //         'amount' => $amount[$key],
+        //     ]);
+        // }
+
+        // Deduct Product Stock
+        // $sales = Sales::find($sale_id);
+        // $product_id = $sales->customer->id;
+        // $customer = Customer::find($customer_id);
+       
+        // $customer->balance = $chalan->nbalance;
+        // $customer->delivery += $chalan->qty;
+        // $customer->due -= $chalan->qty;
+        // $customer->save();
+
+        // // Retrieve the customer ID from the sales record
+        // $customer_id = $sales->customer->id;
+        // $customer = Customer::find($customer_id);
+        // $customer->balance += $paidAmount;
+        // $customer->advance += $totalQty;
+        // $customer->due += $totalQty;
+        // $customer->rate = $rate;
+        // $customer->rateType = $rateType;
+        // $customer->save();
 
        
 

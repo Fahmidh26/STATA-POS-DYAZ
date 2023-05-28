@@ -29,7 +29,7 @@
 			@php
 				$sl = 1;
 			@endphp
-	 @foreach($sales as $item)
+	 @foreach($quotations as $item)
 	 <tr class="align-middle text-center text-sm">
 		<td width="5%"><h6 class="mb-0 text-sm "> {{ $sl++ }}</h6></td>
         <td><p class="mb-0 text-sm">{{ $item->sale_date }}</p></td>

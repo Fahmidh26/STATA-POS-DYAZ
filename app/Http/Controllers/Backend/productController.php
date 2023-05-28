@@ -23,10 +23,23 @@ class productController extends Controller
 
 	public function StoreProduct(Request $request){
 
+		$image = $request->file('product_img');
+    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+
+    	Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
+    	$save_url = 'upload/products/'.$name_gen;
+
       $product_id = Product::insertGetId([
       	'category_id' => $request->category_id,
       	'product_name' => $request->product_name,
       	'product_code' => $request->product_code,
+
+		'product_img' => $save_url,
+      	'p_vat' => $request->p_vat,
+      	'product_details' => $request->product_details,
+
+		'cost_price' => $request->cost_price,
+      	'sale_price' => $request->sale_price,
 
 		'qty' => 0,
 	

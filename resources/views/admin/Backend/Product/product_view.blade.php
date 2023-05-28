@@ -14,8 +14,12 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr class="align-middle text-center">
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cost Price</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sale Price</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 											 
 										</tr>
@@ -23,12 +27,13 @@
 									<tbody>
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
-					<td><h6 class="mb-0 text-sm">{{ $item->product_code }}</h6></td>
+					<td><img src="{{ asset($item->product_img) }}" style="width: 70px; height: 40px;"> </td>
 					<td><p class="mb-0 text-sm">{{ $item->product_name }}</p></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->product_code }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->cost_price }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->sale_price }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->qty }}</h6></td>
 					
-					
-					
-			
 					<td>
 
 			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('product.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>

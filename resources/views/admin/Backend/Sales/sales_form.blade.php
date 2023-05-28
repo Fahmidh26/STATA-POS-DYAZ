@@ -67,8 +67,8 @@
 				<thead>
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Item Information</th>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Stock/Metric Ton</th> 
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Metric Ton</th>
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Stock/Unit</th> 
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Unit</th>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rate Type</th>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rate</th>
 						{{-- <th>Dis. Value</th>
@@ -87,9 +87,9 @@
 						</td> --}}
 						<td>
 							<select id="item" name="item[]" class="form-control" required="" >
-								{{-- <option value="" selected="" disabled="">Select Product</option> --}}
+								<option value="" selected="" disabled="">Select Product</option>
 								@foreach($products as $product)
-									 <option selected="" value="{{ $product->id }}">{{ $product->product_name }}</option>	
+									 <option value="{{ $product->id }}">{{ $product->product_name }}</option>	
 								@endforeach
 							</select>
 						</td>
@@ -380,19 +380,23 @@
       $.get('/get-data-product', { option: selectedOption }, function(data) {
         // update the field with the response data
         $("#stock").val(data.qty);
+		$("#rate").val(data.sale_price);
       });
     });
 
 	$("#table_field tbody").on("change", "select[name='item[]']", function () {
 		var product_id = $(this).val();
 		var stock = $(this).closest("tr").find(".stock");
+		var rate = $(this).closest("tr").find(".rate");
 		$.get('/get-data-product', { option: product_id }, function(data) {
         // update the field with the response data
 		console.log('Hello');
 		if(data.qty == null){
 			stock.val(0);
+			rate.val(0);
 		}else{
 			stock.val(data.qty);
+			rate.val(data.sale_price);
 		}
 			
       });

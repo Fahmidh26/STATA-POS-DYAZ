@@ -55,4 +55,10 @@ class SupplierController extends Controller
 		return view('admin.Backend.Supplier.supplier_manage' ,compact('suppliers'));
 	}
 
+	public function SupplierEdit($id){
+		$supplier = Supplier::findOrFail($id);
+			return view('admin.Backend.Supplier.supplier_edit',compact('supplier'));
+		}
+	
+
 }

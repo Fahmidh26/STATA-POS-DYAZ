@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Bank;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Quotation;
 use App\Models\QuotationItem;
+use App\Models\QuotationPaymentItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -15,14 +17,88 @@ use PDF;
 
 class QuotationController extends Controller
 {
-    public function index() 
-    {
-        // $id = Auth::user()->id;
-		// $adminData = Admin::find($id);
+    public function QuotationForm() 
+    {       
+        $banks = Bank::orderBy('bank_name','ASC')->get();
         $customers = Customer::orderBy('customer_name','ASC')->get();
-        $products = Product::orderBy('product_name','ASC')->get();
-        return view('admin.Backend.Quotation.quotation_form', compact('products','customers'));
+        $products = Product::where('qty','>',0)->orderBy('product_name','ASC')->get();
+        return view('admin.Backend.Quotations.quotation_form', compact('customers','products','banks'));
     }
+
+    public function QuotationStore(Request $request)
+    {
+
+        $admin = Auth::guard('admin')->user();
+
+        $quotation_id = Quotation::insertGetId([
+            'customer_id' => $request->customer_id,
+            'sale_date' => $request->saleDate,
+            'details' => $request->details,
+            'sub_total' => $request->subtotal,
+            'grand_total' => $request->grandtotal,
+            'discount_flat' => $request->dflat,
+            'discount_per' => $request->dper,
+            'total_vat' => $request->vper,
+            'user_id' => $admin->id,
+            'p_paid_amount' => $request->paidamount,
+            'due_amount' => $request->dueamount,
+            'created_at' => Carbon::now(),   
+  
+        ]);
+
+        
+        $item = $request->input('item');
+        $stock = $request->input('stock');
+        // $batch = $request->input('batch');
+        $qty = $request->input('qnty');
+        $rate = $request->input('rate');
+        $rateType = $request->input('rateType');
+        $amount = $request->input('amount');
+
+        foreach ($item as $key => $value) {
+
+            QuotationItem::create([
+                'product_id' => $value,
+                'quotation_id' => $quotation_id,
+                'qty' => $qty[$key],
+                'rate' => $rate[$key],
+                'amount' => $amount[$key],
+
+
+            ]);
+        }   
+
+
+
+        $payitem = $request->input('payitem');
+        $pay_amount = $request->input('pay_amount');
+     
+        foreach ($payitem as $key => $value) {
+
+            QuotationPaymentItem::create([
+                'bank_id' => $value,
+                'quotation_id' => $quotation_id,
+                'b_paid_amount' => $pay_amount[$key],
+            ]);
+        }
+    
+		// return redirect()->back();
+        $notification = array(
+			'message' => 'Quotation Created Successfully',
+			'alert-type' => 'success'
+		);
+
+        return redirect()->back()->with($notification);
+
+    }
+
+    public function ManageQuotation (){
+       
+        $quotations = Quotation::orderBy('id','DESC')->get();
+		return view('admin.Backend.Quotations.manage_quotation',compact('quotations'));
+    }
+
+// END
 
     public function saveUser(Request $request)
     {
@@ -80,13 +156,6 @@ class QuotationController extends Controller
 		);
 
         return redirect()->back()->with($notification);
-
-    }
-
-    public function ManageQuotation(Request $request){
-       
-        $quotations = Quotation::latest()->get();
-		return view('admin.Backend.Quotation.manage_quotation',compact('quotations'));
 
     }
 

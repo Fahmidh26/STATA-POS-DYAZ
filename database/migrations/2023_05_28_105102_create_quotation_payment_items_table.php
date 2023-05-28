@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('quotation_items', function (Blueprint $table) {
+        Schema::create('quotation_payment_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('quotation_id');
             $table->foreign('quotation_id')->references('id')->on('quotations')->onDelete('cascade');
-            $table->unsignedBigInteger('product_id');
-            $table->string('qty');
-            $table->float('price',8,2);
+            $table->unsignedBigInteger('bank_id');
+            $table->float('b_paid_amount',8,2);
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quotation_items');
+        Schema::dropIfExists('quotation_payment_items');
     }
 };

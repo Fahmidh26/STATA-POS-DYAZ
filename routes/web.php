@@ -654,16 +654,16 @@ Route::prefix('product')->group(function(){
 
 
     // QUOTATION
-    Route::prefix('quotation')->group(function(){
-    Route::get('/add', [QuotationController::class, 'index'])->name('admin.quotation');
-    Route::get('/manage', [QuotationController::class, 'ManageQuotation'])->name('all.quotation');
+    // Route::prefix('quotation')->group(function(){
+    // Route::get('/add', [QuotationController::class, 'index'])->name('admin.quotation');
+    // Route::get('/manage', [QuotationController::class, 'ManageQuotation'])->name('all.quotation');
     
-    Route::post('/store-input-fields', [QuotationController::class, 'saveUser'])->name('repeater');
+    // Route::post('/store-input-fields', [QuotationController::class, 'saveUser'])->name('repeater');
     
-    Route::get('/view/{quotation_id}', [QuotationController::class, 'viewQuotation'])->name('view.quotation');
+    // Route::get('/view/{quotation_id}', [QuotationController::class, 'viewQuotation'])->name('view.quotation');
     
-    Route::get('/invoice_download/{quotation_id}', [QuotationController::class, 'AdminInvoiceDownload'])->name('invoice.download');
-    });
+    // Route::get('/invoice_download/{quotation_id}', [QuotationController::class, 'AdminInvoiceDownload'])->name('invoice.download');
+    // });
 
     Route::get('/get-data', [QuotationController::class, 'getData']);
     Route::get('/get-data-product', [QuotationController::class, 'getDataProduct']);
@@ -710,7 +710,7 @@ Route::prefix('product')->group(function(){
 
         Route::get('/manage', [SupplierController::class, 'SupplierManage'])->name('supplier.manage');
         
-        // Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
+        Route::get('/edit/{id}', [SupplierController::class, 'SupplierEdit'])->name('supplier.edit');
         
         // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
         
@@ -801,6 +801,24 @@ Route::prefix('product')->group(function(){
                 Route::get('/status/factory/{id}', [PurchaseController::class, 'StatusChangeFactory'])->name('purchase.status.factory');
                 
                 });
+
+
+    // Quotation
+    Route::prefix('quotation')->group(function(){
+
+        Route::get('/view', [QuotationController::class, 'QuotationForm'])->name('quotation.view');
+        
+        Route::post('/store', [QuotationController::class, 'QuotationStore'])->name('quotation.store');
+
+        Route::get('/manage', [QuotationController::class, 'ManageQuotation'])->name('quotation.manage');
+        
+        Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
+        
+        Route::get('/status/port/{id}', [PurchaseController::class, 'StatusChangePort'])->name('purchase.status.port');
+        Route::get('/status/factory/{id}', [PurchaseController::class, 'StatusChangeFactory'])->name('purchase.status.factory');
+        
+        });
+    // END Quotation
 
 
 

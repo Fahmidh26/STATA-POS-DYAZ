@@ -44,8 +44,9 @@ class CustomerController extends Controller
     } // end method
 
 	public function CustomerEdit($id){
+		$customers = Customer::where('dea_cus',1)->orderBy('customer_name','ASC')->get();
 		$customer = Customer::findOrFail($id);
-			return view('admin.Backend.Brand.Slider.slider_edit',compact('customer'));
+			return view('admin.Backend.Brand.customer_edit',compact('customer','customers'));
 		}
 	
 	
