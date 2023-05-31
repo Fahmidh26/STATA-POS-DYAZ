@@ -7,7 +7,7 @@
 @php
 $category = (auth()->guard('admin')->user()->category == 1);
 $product = (auth()->guard('admin')->user()->product == 1);
-$production = (auth()->guard('admin')->user()->production == 1);
+// $production = (auth()->guard('admin')->user()->production == 1);
 $customer = (auth()->guard('admin')->user()->customer == 1);
 $bank = (auth()->guard('admin')->user()->bank == 1);
 $supplier = (auth()->guard('admin')->user()->supplier == 1);
@@ -15,7 +15,7 @@ $sale = (auth()->guard('admin')->user()->sale == 1);
 $l_c = (auth()->guard('admin')->user()->l_c == 1);
 $chalan = (auth()->guard('admin')->user()->chalan == 1);
 $expense = (auth()->guard('admin')->user()->expense == 1);
-$schedule = (auth()->guard('admin')->user()->schedule == 1);
+// $schedule = (auth()->guard('admin')->user()->schedule == 1);
 $report = (auth()->guard('admin')->user()->report == 1);
 $hr = (auth()->guard('admin')->user()->hr == 1);
 $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
@@ -86,7 +86,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 @endif
 
 
-@if($production == true)
+{{-- @if($production == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#production" class="nav-link  {{ ($prefix == '/production')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -123,7 +123,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 
 @if($product == true)
@@ -167,7 +167,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
 
 
-@if($schedule  == true)
+{{-- @if($schedule  == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#schedule" class="nav-link  {{ ($prefix == '/schedule')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -204,7 +204,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 
 
@@ -388,18 +388,18 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
     </svg>
 </div>
 
-<span class="nav-link-text ms-1">L/C Opening</span>
+<span class="nav-link-text ms-1">Purchase</span>
 </a>
 <div class="collapse hide" id="l_c" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item">
 <a class="nav-link {{ ($route == 'purchase.view')? 'active':'' }}" href="{{ route('purchase.view') }}">
 <span class="sidenav-mini-icon"></span>
-<span class="sidenav-normal">Add L/C</span>
+<span class="sidenav-normal">Add Purchase</span>
 </a>
 <a class="nav-link {{ ($route == 'purchase.lcopened')? 'active':'' }}" href="{{ route('purchase.lcopened') }}">
 <span class="sidenav-mini-icon"></span>
-<span class="sidenav-normal">L/C Opened</span>
+<span class="sidenav-normal">Purchase Opened</span>
 </a>
 <a class="nav-link {{ ($route == 'purchase.port')? 'active':'' }}" href="{{ route('purchase.port') }}">
   <span class="sidenav-mini-icon"></span>

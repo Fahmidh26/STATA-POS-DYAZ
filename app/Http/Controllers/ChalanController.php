@@ -10,6 +10,7 @@ use App\Models\Bank;
 use App\Models\TodaysProduction;
 use Illuminate\Http\Request;
 use App\Models\Chalan;
+use App\Models\Product;
 use App\Models\Schedule;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -17,20 +18,16 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class ChalanController extends Controller
 {
     public function ChalanForm() 
-    {
-        $today = now()->toDateString();
-        // $customerIds =Sales::join('customers', 'sales.customer_id', '=', 'customers.id')->select('sales.customer_id', 'customers.customer_name')
-        //         ->distinct()->pluck('customers.customer_name', 'sales.customer_id');
-        $customerIds = Schedule::whereDate('schedule_date', $today)
-        ->join('customers', 'schedules.customer_id', '=', 'customers.id')
-        ->select('schedules.customer_id', 'customers.customer_name')
-        ->distinct()
-        ->pluck('customers.customer_name', 'schedules.customer_id');
-        $inventory = TodaysProduction::sum('qty');
-        $acidProducts = AcidProduct::orderBy('product_name','ASC')->first();
-        // $products = Product::orderBy('product_name','ASC')->get();
+    {   
+        // $id = Auth::user()->id;
+		// $adminData = Admin::find($id);
         $banks = Bank::orderBy('bank_name','ASC')->get();
-        return view('admin.Backend.Chalan.chalan_form', compact('customerIds','acidProducts','inventory','banks'));
+        $customers = Customer::orderBy('customer_name','ASC')->get();
+        // $inventory = TodaysProduction::sum('qty');
+        $acidProducts = AcidProduct::find(1);
+        // $acidProducts = AcidProduct::orderBy('product_name','ASC')->first();
+        $products = Product::where('qty','>',0)->orderBy('product_name','ASC')->get();
+        return view('admin.Backend.Chalan.chalan_form', compact('customers','banks','acidProducts','products'));
     }
 
     public function ChalanStore(Request $request)

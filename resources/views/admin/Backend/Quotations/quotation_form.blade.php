@@ -45,15 +45,19 @@
 				</div>
 				<div class="col">
 					<div class="row mb-3">
-						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Sale Date</label></div>
+						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Quotation Date</label></div>
 						<div class="col"><input class="form-control" type="date" id="saleDate" name="saleDate" required=""></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Expire Date</label></div>
+						<div class="col"><input class="form-control" type="date" id="expDate" name="expDate" required=""></div>
 					</div>
 					{{-- <div class="row mb-3">
 						<div class="col-2"><label>Details</label></div>
 						<div class="col"><input class="form-control mb-3" type="text" id="details" name="details"></div>
 					</div> --}}
 					<div class="row mb-3">
-						<div class="col-3"> <label for="details">Details</label></div>
+						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold" for="details">Details</label></div>
 						<div class="col"><textarea class="form-control" name="details" id="details" rows="3"></textarea></div>
 					</div>
 					{{-- <div class="row mb-3">

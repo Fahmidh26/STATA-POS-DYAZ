@@ -9,95 +9,98 @@
 		  <div class="card-body p-3">
 			<div class="row">
 				
-			<form class="insert-form" id="insert_form" method="post" action="{{ route('purchase.store') }}">
+			<form class="insert-form" id="insert_form" method="post" action="">
 			@csrf
 			<div class="row">
 				<div class="col">
 					<div class="row mb-3">
-						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Supplier</label></div>
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
 						<div class="col">
-							<select id="mySelect" name="supplier_id" class="form-control" required="">
-							<option value="" selected="" value="{{$purchase->supplier_id}}" disabled="">{{$purchase->supplier->supplier_name}}</option>
-							@foreach($suppliers as $supplier)
-									 <option value="{{ $supplier->id }}">{{ $supplier->supplier_name }}</option>	
-							@endforeach
+							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
+							<option value="" selected="" disabled="">{{$sale->customer->customer_name}}</option>
+							{{-- @foreach($customers as $customer)
+									 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>	
+							@endforeach --}}
 							<!-- More options -->
 							</select>
 						</div>
 						</div>
 	
 						<div class="row mb-3">
-							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Chalan No.</label></div>
-							<div class="col"><input class="form-control" value="{{$purchase->chalan_no}}" type="text" id="chalan" name="chalan" required=""></div>
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Address</label></div>
+							<div class="col"><input class="form-control" value="{{$sale->customer->address
+							}}" type="text" id="address" name="address" required="">
+						</div>
 							
 						</div>
-						<div class="row mb-1">
-							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Container Tracking No.</label></div>
-							<div class="col"><input value="{{$purchase->track}}" class="form-control mb-3" type="text" id="track" name="track" required=""></div>
+						<div class="row mb-3">
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
+							<div class="col"><input value="{{$sale->customer->phone
+							}}" class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
 							
 						</div>
 	
+						{{-- <div class="row mb-3">
+							<div class="col-2"><label>Address</label></div>
+							<div class="col"><input class="form-control mb-3" type="text" id="address" name="address" readonly></div>
+						</div> --}}
 				</div>
 				<div class="col">
 					<div class="row mb-3">
-						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">L/C Opening Date</label></div>
-						<div class="col"><input value="{{$purchase->purchase_date}}" class="form-control" type="date" id="quoDate" name="quoDate" required=""></div>
+						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Sale Date</label></div>
+						<div class="col"><input class="form-control" value="{{$sale->sale_date}}" type="date" id="saleDate" name="saleDate" required=""></div>
 					</div>
-					
-					<div class="row mb-0">
-						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Last Date of Shipment</label></div>
-						<div class="col"><input value="{{$purchase->ldate}}" class="form-control mb-3" type="date" id="details" name="details"></div>
+					{{-- <div class="row mb-3">
+						<div class="col-2"><label>Details</label></div>
+						<div class="col"><input class="form-control mb-3" type="text" id="details" name="details"></div>
+					</div> --}}
+					<div class="row mb-3">
+						<div class="col-3"> <label for="details">Details</label></div>
+						<div class="col"><textarea class="form-control" name="details" id="details" rows="3">{{$sale->details}}</textarea></div>
 					</div>
-					<div class="row mb-1">
-						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Status</label></div>
-						<div class="col"><input value="{{$purchase->status}}" class="form-control mb-3" type="text" id="status" name="status" required=""></div>
-						
+					{{-- <div class="row mb-3">
+						<div class="col"><input class="form-control mb-3" type="hidden" id="auth_id" name="auth_id"  value="{{ Auth::id()}}">
 					</div>
+			
+				</div> --}}
 			</div>
 			<div class="table-responsive">
 				<table id="table_field" class="table align-items-center mb-0">
 				<thead>
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Item Information</th>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Stock/Metric Ton</th> 
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">PI No.</th>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Metric Ton</th>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rate Type</th>
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Stock/Unit</th> 
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Unit</th>
+					
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rate</th>
+						{{-- <th>Dis. Value</th>
+						<th>Vat %</th>
+						<th>VAT Value</th> --}}
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Total</th>
 						{{-- <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Action</th> --}}
 					</tr>
 				</thead>
-					
-				@foreach ($purchaseItems as $item)
-						<tr>
-						  <td>
-							<select id="item" name="item[]" class="form-control" required="" >
-								<option value="{{$item->product_id}}" selected="" disabled="">{{$item->product->product_name}}</option>
-								@foreach($products as $product)
-									 <option value="{{ $product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>	
-								@endforeach
-							</select>
+				@foreach ($saleItem as $item)
+				<tr>
+					<td>
+						<select id="item" name="item[]" class="form-control" required="" >
+							<option value="{{$item->product_id}}" selected="">{{$item->product->product_name}}</option>
+							{{-- @foreach($products as $product)
+								 <option value="{{ $product->id }}">{{ $product->product_name }}</option>	
+							@endforeach --}}
+						</select>
+					</td>
+					  <td><input class="form-control stock" type="text" value="{{$item->product->qty}}" id="stock" name="stock[]" required="" readonly></td>
+					  <td><input class="form-control qnty" value="{{$item->qty}}" type="number" id="qnty" name="qnty[]" required=""></td>
+					  <td><input class="form-control rate" value="{{$item->rate}}" type="number" id="rate" name="rate[]" required=""></td>
+					  <td><input class="form-control total" value="{{$item->amount}}" type="number" id="amount" name="amount[]" value="0" readonly></td>
+					  <td>
+						{{-- <a name="add" id="add" class="btn bg-gradient-dark mb-0"><i class="fas fa-plus" aria-hidden="true"></i></a> --}}
+						{{-- <i class="fa-solid fa-circle-plus display-4 text-success" type="button" name="add" id="add" ></i> --}}
+					</td>
+				</tr>
+				@endforeach
 
-						</td>
-						  <td><input class="form-control stock" type="text" id="stock" name="stock[]" required="" readonly></td>
-						  <td><input value="{{$item->batch_no}}" class="form-control batch" type="text" id="batch" name="batch[]" required=""></td>
-						  <td><input value="{{$item->qty}}" class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td>
-						  <td><select id="rateType" name="rateType[]" class="form-control" required="" >
-							<option value="{{$item->rateType}}" selected="" disabled="">{{$item->rateType}}</option>
-							<option value="FOB">FOB</option>
-							<option value="EXW">EXW</option>
-							<option value="CFR">CFR</option>
-							<option value="CIF">CIF</option>
-							</select>
-						  </td>
-						  <td><input value="{{$item->rate}}" class="form-control rate" type="number" id="rate" name="rate[]" required=""></td>
-						  <td><input value="{{$item->amount}}" class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td>
-						  {{-- <td>
-							<a name="add" id="add" class="btn bg-gradient-dark mb-0"><i class="fas fa-plus" aria-hidden="true"></i></a>
-						</td> --}}
-					</tr>
-					@endforeach
 				</table>
 				<hr>
 					<div class="row">
@@ -107,37 +110,37 @@
 					<div class="col-4">
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold">Sub Total</label></div>
-							<div class="col"><span><input value="{{$purchase->sub_total}}" class="form-control" type="text" name="subtotal" id="subtotal" readonly></span>
+							<div class="col"><span><input class="form-control" type="text" name="subtotal" id="subtotal" value="{{$sale->sub_total}}" readonly></span>
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (%)</label></div>
-							<div class="col"><input value="{{$purchase->purchase_discount}}" class="dper form-control" type="number" id="discount-percentage" name="dper">
+							<div class="col"><input  value="{{$sale->discount_per}}" class="dper form-control" type="number" id="discount-percentage" name="dper">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">VAT (%)</label></div>
-							<div class="col"><input value="{{$purchase->total_vat}}" class="vper form-control" type="number" id="vat-percentage" name="vper" readonly>
+							<div class="col"><input value="{{$sale->total_vat}}" class="vper form-control" type="number" id="vat-percentage" name="vper" readonly>
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (TK)</label></div>
-							<div class="col"><input value="{{$purchase->discount_flat}}" class="dflat form-control" name="dflat" type="number" id="discount-flat">
+							<div class="col"><input value="{{$sale->discount_flat}}" class="dflat form-control" name="dflat" type="number" id="discount-flat">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Grand Total</label></div>
-							<div class="col"><input value="{{$purchase->grand_total}}" class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
+							<div class="col"><input value="{{$sale->grand_total}}" class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col-4"><label class="text-uppercase text-dark text-xs font-weight-bold ">Paid Amount</label></div>
-							<div class="col"><input value="{{$purchase->p_paid_amount}}" readonly class="form-control" type="number" name="paidamount" id="paidamount">
+							<div class="col"><input readonly value="{{$sale->p_paid_amount}}" class="form-control" type="number" name="paidamount" id="paidamount">
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col-4"><label class="text-uppercase text-dark text-xs font-weight-bold ">Due Amount</label></div>
-							<div class="col"><input value="{{$purchase->due_amount}}" class="form-control" type="text" name="dueamount" id="dueamount" readonly>
+							<div class="col"><input value="{{$sale->due_amount}}" class="form-control" type="text" name="dueamount" id="dueamount" readonly>
 							</div>
 						</div>
 
@@ -154,26 +157,22 @@
 							  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Paid Amount</th>
 							  {{-- <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Action</th> --}}
 						  </tr>
-							</thead>
 
-						@foreach ($paymentItems as $item)
+							</thead>
+							@foreach ($paysaleItem as $pitem)
 						  <tr>
 								<td>
 								  <select id="payitem" name="payitem[]" class="form-control" required="" >
-									  <option value="{{$item->bank_id}}" selected="" disabled="">{{$item->payment->bank_name}}</option>
-									  @foreach($banks as $payment)
-										   <option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>	
-									  @endforeach
+									  <option selected="">{{$pitem->payment->bank_name}}</option>
+									
 								  </select>	  
 							  </td>
-								<td><input class="form-control pay_amount" value="{{$item->b_paid_amount}}" type="number" id="pay_amount" name="pay_amount[]" required=""></td>
+								<td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" value="{{$pitem->b_paid_amount}}" required=""></td>
 								{{-- <td><a name="addpay" id="addpay" class="btn bg-gradient-dark mb-0"><i class="fas fa-plus" aria-hidden="true"></i></a>
 								</td> --}}
 								<input class="form-control sumPayment" type="text" name="sumPayment" id="sumPayment" hidden readonly>
-
-								<input class="form-control purchase_id" type="text" value="{{$purchase->id}}" name="purchase_id" id="purchase_id" hidden readonly>
 						  </tr>
-						@endforeach
+						  @endforeach
 					  </table>
 					</div>
 					</div>
@@ -184,17 +183,17 @@
 				{{-- <input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="
 				Save Purchase"> --}}
 			</div>
-			<div class="container">
+			{{-- <div class="container">
 				<div class="row">
 				  <div class="col">
 				  </div>
 				  <div class="col">
-					<input type="submit" class="btn bg-gradient-primary w-100" value="Update L/C">
+					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Sale">
 				  </div>
 				  <div class="col">
 				  </div>
 				</div>
-			  </div>
+			  </div> --}}
 			
 	  </form>
 	</div>
@@ -210,7 +209,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-  <script>
+  {{-- <script>
 	// Add a search field to the dropdown
 	$("#mySearch").on("keyup", function() {
 	  var value = $(this).val().toLowerCase();
@@ -218,11 +217,11 @@
 		$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 	  });
 	});
-  </script>
-  
+  </script> --}}
+{{--   
   <script>
 	$(document).ready(function(){
-		var html='<tr><td><select id="item" name="item[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product) <option value="{{ $product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>	@endforeach</select></td><td><input class="form-control stock" type="text" id="stock" name="stock[]" required="" readonly></td><td><input class="form-control batch" type="text" id="batch" name="batch[]" required=""></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><select id="rateType" name="rateType[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Rate Type</option><option value="FOB">FOB</option><option value="EXW">EXW</option><option value="CFR">CFR</option><option value="CIF">CIF</option></select></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
+		var html='<tr><td>	<select id="item" name="item[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option value="{{ $product->id }}">{{ $product->product_name }}</option>@endforeach</select></td><td><input class="form-control stock" type="text" id="stock" name="stock[]" value="{{$acidProducts->stock}}" required="" readonly></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
 	
 		// var x =1;
 	  $("#add").click(function(){
@@ -234,7 +233,7 @@
 	duePrice();
 	});
 
-	var htmlpay='<tr><td><select id="payitem" name="payitem[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($banks as $payment)<option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>@endforeach</select></td><td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td><td><a name="payremove" id="payremove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
+	var htmlpay='<tr><td><select id="payitem" name="payitem[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Payment</option>@foreach($banks as $payment)<option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>@endforeach</select></td><td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td><td><a name="payremove" id="payremove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
 
 		// var x =1;
 	  $("#addpay").click(function(){
@@ -245,6 +244,21 @@
 	totalPayment()
 	duePrice();
 	});
+
+	$("#mySelect").change(function() {
+      // get the selected option value
+      var selectedOption = $(this).val();
+
+      // make an AJAX request to the server
+      $.get('/get-data', { option: selectedOption }, function(data) {
+        // update the field with the response data
+        $("#address").val(data.address);
+		$("#phone").val(data.phone);
+		console.log(data);
+		$('.js-example-basic-single').select2();
+
+      });
+    });
 	
 	$("#table_field tbody").on("input", ".rate", function () {
                 var rate = parseFloat($(this).val());
@@ -357,19 +371,23 @@
       $.get('/get-data-product', { option: selectedOption }, function(data) {
         // update the field with the response data
         $("#stock").val(data.qty);
+		$("#rate").val(data.sale_price);
       });
     });
 
 	$("#table_field tbody").on("change", "select[name='item[]']", function () {
 		var product_id = $(this).val();
 		var stock = $(this).closest("tr").find(".stock");
+		var rate = $(this).closest("tr").find(".rate");
 		$.get('/get-data-product', { option: product_id }, function(data) {
         // update the field with the response data
 		console.log('Hello');
 		if(data.qty == null){
 			stock.val(0);
+			rate.val(0);
 		}else{
 			stock.val(data.qty);
+			rate.val(data.sale_price);
 		}
 			
       });
@@ -395,5 +413,14 @@
 
 	});
 </script>
+
+<script>
+	$(document).ready(function() {
+    $('.select2').select2({
+        placeholder: 'Select an option',
+        allowClear: true
+    });
+});
+</script> --}}
 
 @endsection

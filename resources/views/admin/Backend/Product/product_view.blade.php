@@ -19,7 +19,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cost Price</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sale Price</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 											 
 										</tr>

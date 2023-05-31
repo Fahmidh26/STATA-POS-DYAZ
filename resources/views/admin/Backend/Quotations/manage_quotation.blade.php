@@ -17,7 +17,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Invoice No.</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Paid</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sold By</th>
@@ -34,19 +34,22 @@
 		<td width="5%"><h6 class="mb-0 text-sm "> {{ $sl++ }}</h6></td>
         <td><p class="mb-0 text-sm">{{ $item->sale_date }}</p></td>
 		<td class="text-sm font-weight-bold mb-0">{{ $item->customer->customer_name }}</td>
-		<td class="text-sm font-weight-bold mb-0">{{ $item->details }}</td>
+		<td class="text-sm font-weight-bold mb-0">{{ $item->invoice }}</td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->grand_total }} </td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->p_paid_amount }} </td>
 		<td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->user->name }}</h6></td>
-		<td width="20%">
-			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('purchase.details',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+		<td width="30%">
+			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('quotation.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
+
+			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('quotation.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download</a>
 			
-			<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('purchase.status.port',$item->id) }}"><i class="fa-solid fa-anchor me-2"></i>Port</a>
+			@if ($admin->id == $item->user_id)
+			<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('quotation.delete',$item->id) }}"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
+			@else
+			
 
- {{-- <a href="{{ route('purchase.details',$item->id) }}" class="btn btn-primary" title="Purchase View"><i class="fa fa-eye"></i> </a>
-
- <a href="{{ route('purchase.status.port',$item->id) }}" class="btn btn-info" title="Change Status"><i class="fa fa-pencil"></i> </a> --}}
-
+			@endif
+			
 		</td>
 							 
 	 </tr>

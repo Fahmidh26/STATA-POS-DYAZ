@@ -15,6 +15,7 @@ use App\Models\TodaysProduction;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PDF;
 
 class SalesController extends Controller
 {
@@ -41,6 +42,7 @@ class SalesController extends Controller
             'sale_date' => $request->saleDate,
             'details' => $request->details,
             'sub_total' => $request->subtotal,
+            'invoice' => 'STA'.date('Y').mt_rand(10000, 99999),
             'grand_total' => $request->grandtotal,
             'discount_flat' => $request->dflat,
             'discount_per' => $request->dper,
@@ -58,7 +60,7 @@ class SalesController extends Controller
         // $batch = $request->input('batch');
         $qty = $request->input('qnty');
         $rate = $request->input('rate');
-        $rateType = $request->input('rateType');
+        // $rateType = $request->input('rateType');
         $amount = $request->input('amount');
 
         foreach ($item as $key => $value) {
@@ -89,7 +91,7 @@ class SalesController extends Controller
                 'sales_id' => $sale_id,
                 'qty' => $qty[$key],
                 'rate' => $rate[$key],
-                'rateType' => $rateType[$key],
+                // 'rateType' => $rateType[$key],
                 'amount' => $amount[$key],
 
 
@@ -160,9 +162,51 @@ class SalesController extends Controller
     }
 
     public function ManageSales (){
-       
+
+        $admin = Auth::guard('admin')->user();
         $sales = Sales::orderBy('id','DESC')->get();
-		return view('admin.Backend.Sales.manage_sales',compact('sales'));
+		return view('admin.Backend.Sales.manage_sales',compact('sales','admin'));
 
     }
+
+    public function DownloadSale ($id){
+                    
+        $sale = Sales::with('customer','user')->where('id',$id)->first();
+    	$saleItem = SalesItem::with('product','sales')->where('sales_id',$id)->orderBy('id','DESC')->get();
+
+		$pdf = PDF::loadView('admin.Backend.Sales.view_sales',compact('sale','saleItem'))->setPaper('a4')->setOptions([
+				'tempDir' => public_path(),
+				'chroot' => public_path(),
+		]);
+		return $pdf->download('Sale.pdf');
+    }
+
+    	// Sale Detailed View 
+	    public function DetailSale($id){
+
+            $sale = Sales::findOrFail($id);
+            $saleItem = SalesItem::where('sales_id',$id)->get();
+            $paysaleItem = SalesPaymentItem::where('sale_id',$id)->get();
+            $customers = Customer::orderBy('customer_name','ASC')->get();
+            $products = Product::orderBy('product_name','ASC')->get();
+
+            // dd($paysaleItem);
+
+            return view('admin.Backend.Sales.sale_details',compact('sale','customers','products','saleItem','paysaleItem'));
+
+	} // end method 
+
+    public function SaleDelete($id){
+
+    	Sales::findOrFail($id)->delete();
+
+    	$notification = array(
+			'message' => 'Sale Deleted Successfully',
+			'alert-type' => 'success'
+		);
+
+		return redirect()->back()->with($notification);
+
+    } // end method 
+
 }

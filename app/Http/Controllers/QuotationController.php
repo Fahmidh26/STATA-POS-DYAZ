@@ -33,9 +33,11 @@ class QuotationController extends Controller
         $quotation_id = Quotation::insertGetId([
             'customer_id' => $request->customer_id,
             'sale_date' => $request->saleDate,
+            'expire_date' => $request->expDate,
             'details' => $request->details,
             'sub_total' => $request->subtotal,
             'grand_total' => $request->grandtotal,
+            'invoice' => 'STAQ'.date('Y').mt_rand(10000, 99999),
             'discount_flat' => $request->dflat,
             'discount_per' => $request->dper,
             'total_vat' => $request->vper,
@@ -94,9 +96,51 @@ class QuotationController extends Controller
 
     public function ManageQuotation (){
        
+        $admin = Auth::guard('admin')->user();
+        // dd($admin);
         $quotations = Quotation::orderBy('id','DESC')->get();
-		return view('admin.Backend.Quotations.manage_quotation',compact('quotations'));
+		return view('admin.Backend.Quotations.manage_quotation',compact('quotations','admin'));
     }
+
+    public function DownloadQuotation ($id){
+                    
+        $sale = Quotation::with('customer','user')->where('id',$id)->first();
+    	$saleItem = QuotationItem::with('product','sales')->where('quotation_id',$id)->orderBy('id','DESC')->get();
+
+		$pdf = PDF::loadView('admin.Backend.Quotations.view_quotation',compact('sale','saleItem'))->setPaper('a4')->setOptions([
+				'tempDir' => public_path(),
+				'chroot' => public_path(),
+		]);
+		return $pdf->download('Quotation.pdf');
+    }
+
+    	// Sale Detailed View 
+	    public function DetailQuotation($id){
+
+            $sale = Quotation::findOrFail($id);
+            $saleItem = QuotationItem::where('quotation_id',$id)->get();
+            $paysaleItem = QuotationPaymentItem::where('quotation_id',$id)->get();
+            $customers = Customer::orderBy('customer_name','ASC')->get();
+            $products = Product::orderBy('product_name','ASC')->get();
+
+            // dd($paysaleItem);
+
+            return view('admin.Backend.Quotations.quotation_details',compact('sale','customers','products','saleItem','paysaleItem'));
+
+	} // end method 
+
+    public function QuotationDelete($id){
+
+    	Quotation::findOrFail($id)->delete();
+
+    	$notification = array(
+			'message' => 'Quotation Deleted Successfully',
+			'alert-type' => 'success'
+		);
+
+		return redirect()->back()->with($notification);
+
+    } // end method 
 
 // END
 
@@ -213,5 +257,4 @@ class QuotationController extends Controller
     }
 
     
-
 }

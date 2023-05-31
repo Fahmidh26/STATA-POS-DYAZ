@@ -770,26 +770,14 @@ Route::prefix('product')->group(function(){
                 Route::post('/store', [SalesController::class, 'SalesStore'])->name('sales.store');
         
                 Route::get('/manage', [SalesController::class, 'ManageSales'])->name('sales.manage');
-    
-                // Route::get('/port', [PurchaseController::class, 'PurchaseReachedPort'])->name('purchase.port');
-    
-                // Route::get('/factory', [PurchaseController::class, 'PurchaseReachedFactory'])->name('purchase.factory');
-                // Route::get('/get-stock', [PurchaseController::class, 'getProductStock']);
-    
-                // Route::get('/get-unit-price', function(Request $request) {
-                //     // get the product ID from the query string
-                //     $productId = $request->query('productId');
-                  
-                //     // $unitPrice = Product::where('id',$productId)->value('unit_price')->get();
-                //     // query the database for the unit price of the product
-                //     $unitPrice = DB::table('products')->where('id', $productId)->value('selling_price');
-                  
-                //     // return the unit price as a JSON response
-                //     return response()->json(['unitPrice' => $unitPrice]);
-                //   });
-            
+
+                Route::get('/download/{id}', [SalesController::class, 'DownloadSale'])->name('sale.download.view');
+
+                Route::get('/details/{id}', [SalesController::class, 'DetailSale'])->name('sales.details.view');
+
+                Route::get('/delete/{id}', [SalesController::class, 'SaleDelete'])->name('sale.delete');
                 
-                Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
+                // Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
                 
                 // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
                 
@@ -803,7 +791,7 @@ Route::prefix('product')->group(function(){
                 });
 
 
-    // Quotation
+    // Quotation UPDATED
     Route::prefix('quotation')->group(function(){
 
         Route::get('/view', [QuotationController::class, 'QuotationForm'])->name('quotation.view');
@@ -812,10 +800,11 @@ Route::prefix('product')->group(function(){
 
         Route::get('/manage', [QuotationController::class, 'ManageQuotation'])->name('quotation.manage');
         
-        Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
-        
-        Route::get('/status/port/{id}', [PurchaseController::class, 'StatusChangePort'])->name('purchase.status.port');
-        Route::get('/status/factory/{id}', [PurchaseController::class, 'StatusChangeFactory'])->name('purchase.status.factory');
+        Route::get('/download/{id}', [QuotationController::class, 'DownloadQuotation'])->name('quotation.download.view');
+
+        Route::get('/details/{id}', [QuotationController::class, 'DetailQuotation'])->name('quotation.details.view');
+
+        Route::get('/delete/{id}', [QuotationController::class, 'QuotationDelete'])->name('quotation.delete');
         
         });
     // END Quotation
