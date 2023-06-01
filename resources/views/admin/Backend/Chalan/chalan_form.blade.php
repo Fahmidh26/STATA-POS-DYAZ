@@ -9,7 +9,7 @@
 		  <div class="card-body p-3">
 			<div class="row">
 				
-			<form class="insert-form" id="insert_form" method="post" action="{{ route('sales.store') }}">
+			<form class="insert-form" id="insert_form" method="post" action="{{ route('chalan.store') }}">
 			@csrf
 			<div class="row">
 				<div class="col">
@@ -104,11 +104,11 @@
 					</tr>
 				</table>
 				<hr>
-					{{-- <div class="row">
+					<div class="row">
 					<div class="col">
 					</div>
 
-					<div class="col-4">
+					<div class="col-4" hidden>
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold">Sub Total</label></div>
 							<div class="col"><span><input class="form-control" type="text" name="subtotal" id="subtotal" readonly></span>
@@ -148,7 +148,7 @@
 					
 					</div>
 				</div>
-				<div class="row">
+				<div class="row" hidden>
 					<div class="col">
 						<div class="table-responsive">
 							<table id="table_fieldpayment" class="table align-items-center mb-0">
@@ -162,14 +162,14 @@
 							</thead>
 						  <tr>
 								<td>
-								  <select id="payitem" name="payitem[]" class="form-control" required="" >
+								  <select id="payitem" name="payitem[]" class="form-control">
 									  <option value="" selected="" disabled="">Select Payment</option>
 									  @foreach($banks as $payment)
 										   <option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>	
 									  @endforeach
 								  </select>	  
 							  </td>
-								<td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td>
+								<td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]"></td>
 								<td><a name="addpay" id="addpay" class="btn bg-gradient-dark mb-0"><i class="fas fa-plus" aria-hidden="true"></i></a>
 								</td>
 								<input class="form-control sumPayment" type="text" name="sumPayment" id="sumPayment" hidden readonly>
@@ -179,7 +179,7 @@
 					</div>
 					<div class="col">				
 					</div>
-				</div> --}}
+				</div>
 				
 				{{-- <input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="
 				Save Purchase"> --}}
@@ -189,7 +189,7 @@
 				  <div class="col">
 				  </div>
 				  <div class="col">
-					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Sale">
+					<input type="submit" class="btn bg-gradient-primary w-100" value="Create Chalan">
 				  </div>
 				  <div class="col">
 				  </div>
@@ -234,7 +234,7 @@
 	duePrice();
 	});
 
-	var htmlpay='<tr><td><select id="payitem" name="payitem[]" class="form-control" required="" ><option value="" selected="" disabled="">Select Payment</option>@foreach($banks as $payment)<option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>@endforeach</select></td><td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" required=""></td><td><a name="payremove" id="payremove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
+	var htmlpay='<tr><td><select id="payitem" name="payitem[]" class="form-control"><option value="" selected="" disabled="">Select Payment</option>@foreach($banks as $payment)<option value="{{ $payment->id }}">{{ $payment->bank_name }}</option>@endforeach</select></td><td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" ></td><td><a name="payremove" id="payremove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
 
 		// var x =1;
 	  $("#addpay").click(function(){

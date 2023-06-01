@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chalans', function (Blueprint $table) {
+        Schema::create('chalan_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');
-            $table->string('company');
-            $table->string('address');
-            $table->date('chalan_date');
-            $table->string('chalan_no');
-            $table->integer('qty');
+            $table->unsignedBigInteger('chalan_id');
+            $table->foreign('chalan_id')->references('id')->on('chalans')->onDelete('cascade');
+            $table->string('qty');
+            $table->float('rate',8,2);
+            $table->float('price',8,2);
+            $table->float('amount',8,2);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chalans');
+        Schema::dropIfExists('chalan_items');
     }
 };

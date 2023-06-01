@@ -819,7 +819,7 @@ Route::prefix('product')->group(function(){
     
             Route::get('/manage', [ChalanController::class, 'ManageChalan'])->name('chalan.manage');
 
-            Route::get('/download/{id}', [ChalanController::class, 'DownloadChalan'])->name('chalan.download');
+            Route::get('/download/{id}', [ChalanController::class, 'DownloadChalan'])->name('chalan.download.view');
 
             // Route::get('/port', [PurchaseController::class, 'PurchaseReachedPort'])->name('purchase.port');
 

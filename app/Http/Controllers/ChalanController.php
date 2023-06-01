@@ -10,15 +10,18 @@ use App\Models\Bank;
 use App\Models\TodaysProduction;
 use Illuminate\Http\Request;
 use App\Models\Chalan;
+use App\Models\ChalanItem;
 use App\Models\Product;
 use App\Models\Schedule;
 use Carbon\Carbon;
-use Barryvdh\DomPDF\Facade\Pdf;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class ChalanController extends Controller
 {
     public function ChalanForm() 
-    {   
+    {
         // $id = Auth::user()->id;
 		// $adminData = Admin::find($id);
         $banks = Bank::orderBy('bank_name','ASC')->get();
@@ -32,50 +35,73 @@ class ChalanController extends Controller
 
     public function ChalanStore(Request $request)
     {
-        // $request->validate([
-    	// 	'supplier_id' => 'required',
-    	// 	'chalan' => 'required',
-        //     'quoDate' => 'required',
-    	// ],[
-    	// 	'customer_id.required' => 'Please Select a Customer',
-        //     'quoDate.required' => 'Please Enter Quotation Date',
-        //     'expDate.required' => 'Please Enter Quotation Expiry Date',
-    	// ]);
+
+        $admin = Auth::guard('admin')->user();
 
         $chalan_id = Chalan::insertGetId([
             'customer_id' => $request->customer_id,
-            'company' => $request->company,
-            'address' => $request->address,
-            'chalan_date' => $request->chalanDate,
-            't_driver' => $request->t_driver,
-            't_no' => $request->t_no,
-            'chalan_no' => 'RSA'.mt_rand(10000000,99999999),
-            'qty' => $request->qnty,
-            'rate' => $request->rate,
-            'total' => $request->amount,
+            'chalan_date' => $request->saleDate,
+            'details' => $request->details,
             // 'sub_total' => $request->subtotal,
+            'chalan_no' => 'STAC'.date('Y').mt_rand(10000, 99999),
             // 'grand_total' => $request->grandtotal,
-            'nbalance' => $request->nbalance,
+            // 'discount_flat' => $request->dflat,
+            // 'discount_per' => $request->dper,
+            // 'total_vat' => $request->vper,
+            'user_id' => $admin->id,
+            // 'p_paid_amount' => $request->paidamount,
+            // 'due_amount' => $request->dueamount,
             'created_at' => Carbon::now(),   
   
         ]);
 
-        $chalan = Chalan::find($chalan_id);
-        $customer_id = $chalan->customer->id;
-        $customer = Customer::find($customer_id);
+        
+        $item = $request->input('item');
+        $stock = $request->input('stock');
+        // $batch = $request->input('batch');
+        $qty = $request->input('qnty');
+        $rate = $request->input('rate');
+        // $rateType = $request->input('rateType');
+        $amount = $request->input('amount');
 
-        $customer->balance = $chalan->nbalance;
-        $customer->delivery += $chalan->qty;
-        $customer->due -= $chalan->qty;
-        $customer->save();
+        foreach ($item as $key => $value) {
 
-        $stock = AcidProduct::find(1);
-        $stock->stock -= $chalan->qty;
-        $stock->save();            
+            $matchProduct = Product::where('id',$value)->get();
+
+            $productIDs = $matchProduct->pluck('id')->toArray();
+            
+            foreach($productIDs as $product) {
+                // dd($product);
+                // print($product.',');
+                $match1Product = Product::where('id',$product)->get();
+
+                if(isset($product->qty) && $product->qty == null){
+                    Product::findOrFail($product)->update([
+                        'qty' => $qty[$key],
+                    ]);
+                }else{
+                    Product::findOrFail($product)->update([
+                        'qty' => $stock[$key] - $qty[$key] ,
+                    ]);
+                }
+            }
+
+
+            ChalanItem::create([
+                'product_id' => $value,
+                'chalan_id' => $chalan_id,
+                'qty' => $qty[$key],
+                'rate' => $rate[$key],
+                // 'rateType' => $rateType[$key],
+                'amount' => $amount[$key],
+
+
+            ]);
+        }   
 
 		// return redirect()->back();
         $notification = array(
-			'message' => 'Chalan Added Successfully',
+			'message' => 'Chalan Created Successfully',
 			'alert-type' => 'success'
 		);
 
@@ -84,17 +110,52 @@ class ChalanController extends Controller
     }
 
     public function ManageChalan (){
-       
+
+        $admin = Auth::guard('admin')->user();
         $chalans = Chalan::orderBy('id','DESC')->get();
-		return view('admin.Backend.Chalan.manage_chalan',compact('chalans'));
+		return view('admin.Backend.Chalan.manage_chalan',compact('chalans','admin'));
+
     }
 
     public function DownloadChalan ($id){
                     
-        $chalan = Chalan::findOrFail($id);
+        $chalan = Chalan::with('customer','user')->where('id',$id)->first();
+    	$chalanItem = ChalanItem::with('product','chalans')->where('chalan_id',$id)->orderBy('id','DESC')->get();
 
-    return view('admin.Backend.Chalan.view_chalan',compact('chalan'));
-}
+		$pdf = PDF::loadView('admin.Backend.Chalan.view_chalan',compact('chalan','chalanItem'))->setPaper('a4')->setOptions([
+				'tempDir' => public_path(),
+				'chroot' => public_path(),
+		]);
+		return $pdf->download('Chalan.pdf');
+    }
+
+    	// Sale Detailed View 
+	    public function DetailSale($id){
+
+            $sale = Sales::findOrFail($id);
+            $saleItem = SalesItem::where('sales_id',$id)->get();
+            $paysaleItem = SalesPaymentItem::where('sale_id',$id)->get();
+            $customers = Customer::orderBy('customer_name','ASC')->get();
+            $products = Product::orderBy('product_name','ASC')->get();
+
+            // dd($paysaleItem);
+
+            return view('admin.Backend.Sales.sale_details',compact('sale','customers','products','saleItem','paysaleItem'));
+
+	} // end method 
+
+    public function SaleDelete($id){
+
+    	Sales::findOrFail($id)->delete();
+
+    	$notification = array(
+			'message' => 'Sale Deleted Successfully',
+			'alert-type' => 'success'
+		);
+
+		return redirect()->back()->with($notification);
+
+    } // end method 
 
 
 }
