@@ -55,8 +55,14 @@
 						<div class="col"><input class="form-control mb-3" type="text" id="details" name="details"></div>
 					</div> --}}
 					<div class="row mb-3">
-						<div class="col-3"> <label for="details">Details</label></div>
-						<div class="col"><textarea class="form-control" name="details" id="details" rows="3">{{$sale->details}}</textarea></div>
+						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold" for="details">Details</label></div>
+						<div class="col"><textarea class="form-control" name="details" id="details" rows="1">{{$sale->details}}</textarea></div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Previous Invoice</label></div>
+						<div class="col"><input value="{{$sale->pInvoice}}" class="form-control mb-3" type="text" id="pInvoice" name="pInvoice"></div>
+						
 					</div>
 					{{-- <div class="row mb-3">
 						<div class="col"><input class="form-control mb-3" type="hidden" id="auth_id" name="auth_id"  value="{{ Auth::id()}}">

@@ -44,6 +44,7 @@ class SalesController extends Controller
             'sub_total' => $request->subtotal,
             'invoice' => 'STA'.date('Y').mt_rand(10000, 99999),
             'grand_total' => $request->grandtotal,
+            'pInvoice' => $request->pInvoice,
             'discount_flat' => $request->dflat,
             'discount_per' => $request->dper,
             'total_vat' => $request->vper,
