@@ -148,7 +148,7 @@
   </div>
   <div class="authority float-right">
     <div class="">
-      <img width="250" height="250" src="frontend/assets/img/abrar.png" alt="">
+      <img width="110" height="112" src="frontend/assets/img/auth_seal.png" alt="">
     </div>
       <p>---------------------------------</p>
       <h5>Authority Signature:</h5>
