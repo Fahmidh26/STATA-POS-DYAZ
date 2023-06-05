@@ -123,11 +123,11 @@
 							<div class="col"><input value="{{$quotation->discount_percentage}}" class="dper form-control" type="number" id="discount-percentage" name="dper">
 							</div>
 						</div>
-						<div class="row mb-3">
+						{{-- <div class="row mb-3">
 							<div class="col-4"><label>VAT (%)</label></div>
 							<div class="col"><input value="{{$quotation->vat_percentage}}" class="vper form-control" type="number" id="vat-percentage" name="">
 							</div>
-						</div>
+						</div> --}}
 						<div class="row mb-3">
 							<div class="col-4"><label>Discount (TK)</label></div>
 							<div class="col"><input value="{{$quotation->discount_flat}}" class="dflat form-control" name="dflat" type="number" id="discount-flat">
@@ -141,7 +141,7 @@
 
 						<div class="row mb-3">
 							<div class="col-4"><label>Paid Amount</label></div>
-							<div class="col"><input value="{{$quotation->paid_amount}}" class="form-control" type="text" name="paidamount" id="paidamount">
+							<div class="col"><input value="{{$quotation->p_paid_amount}}" class="form-control" type="text" name="paidamount" id="paidamount">
 							</div>
 						</div>
 						<div class="row mb-3">
