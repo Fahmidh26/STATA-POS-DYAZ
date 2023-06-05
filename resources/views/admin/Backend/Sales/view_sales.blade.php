@@ -73,12 +73,12 @@
           {{-- <h2 style="color: #ff7c00; font-size: 26px;"><strong>Bengal Automation.</strong></h2> --}}
         </td>
         <td align="right">
-            <pre class="font" >
-              STATA IT LIMITED 
-               Email:statabangladesh@gmail.com
-               {{-- <br> --}}
-               Mob: 88 09678200509 
-            </pre>
+          <pre class="font" style="margin: 0; line-height: 1;">
+            STATA IT LIMITED 
+            Email: statabangladesh@gmail.com
+            {{-- <br> --}}
+            Mob: 88 09678200509 
+          </pre>
         </td>
     </tr>
   </table>
