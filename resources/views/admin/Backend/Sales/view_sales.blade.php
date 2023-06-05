@@ -160,15 +160,13 @@
          
           {{-- <hr>   --}}
           <h3><span style="color: #11790d;">Sub Total </span><span style="font-size: 12px">{{ $sale->sub_total }}</span></h3>
-          <span style="font-size: 12px">
             @if ($sale->discount_per == NULL && $sale->discount_flat == NULL)
             @elseif($sale->discount_per == NULL)
-            <h3><span style="color: #169211;">Discount </span>TK {{ $sale->discount_flat }}</h3>
+            <h3><span style="color: #169211; font-size: 12px;">Discount </span>TK {{ $sale->discount_flat }}</h3>
             @else
-            <h3><span style="color: #169211;">Discount </span>{{ $sale->discount_per }}%</h3>
+            <h3><span style="color: #169211; font-size: 12px;">Discount </span>{{ $sale->discount_per }}%</h3>
             @endif
-          </span>
-          <h3><span style="color: #11790d;">Grand Total </span><span style="font-size: 12px">{{ $sale->grand_total }}</span></h3>
+          <h3><span style="color: #11790d; font-size: 12px;">Grand Total </span><span style="font-size: 12px">{{ $sale->grand_total }}</span></h3>
           
           {{-- <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3> --}}
 
