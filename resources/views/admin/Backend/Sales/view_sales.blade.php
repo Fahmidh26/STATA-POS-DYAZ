@@ -161,7 +161,9 @@
             <h3><span style="color: #169211;">Discount </span>
                 TK {{ $sale->discount_flat }}</h3>
             @else
-                {{ $sale->discount_per  }}%
+            <h3><span style="color: #169211;">Discount </span>
+              {{ $sale->discount_per }}%</h3>
+              
             @endif
             </span>
         
