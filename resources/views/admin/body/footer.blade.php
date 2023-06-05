@@ -7,13 +7,13 @@
             document.write(new Date().getFullYear())
           </script>,
          Powered <i class="fa fa-heart"></i> by
-          <a href="#" class="font-weight-bold" target="_blank">STATA IT</a>
+          <a href="https://statait.com/" class="font-weight-bold" target="_blank">STATA IT</a>
         </div>
       </div>
       <div class="col-lg-6">
         <ul class="nav nav-footer justify-content-center justify-content-lg-end">
           <li class="nav-item">
-            <a href="#" class="nav-link text-muted" target="_blank">STATA IT</a>
+            <a href="https://statait.com/" class="nav-link text-muted" target="_blank">STATA IT</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link text-muted" target="_blank">About Us</a>

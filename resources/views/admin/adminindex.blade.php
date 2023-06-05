@@ -21,16 +21,16 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Today's Production
+					Total Customer
 				  </p>
-				  @if ($todays_production->qty == null)
+				  @if ($customerssum)
 				  <h5
 				  style="font-size: 36px"
 				  class="font-weight-bolder mb-0"
 				>
-					0
+				{{$customerssum}}
 				  <span class="text-success text-sm font-weight-bolder"
-					>MT</span
+					>Customers</span
 				  >
 				</h5>
 				  @else
@@ -38,9 +38,9 @@
 				  style="font-size: 36px"
 				  class="font-weight-bolder mb-0"
 				>
-				  {{$todays_production->qty}}
+				0 
 				  <span class="text-success text-sm font-weight-bolder"
-					>MT</span
+					>Customers</span
 				  >
 				</h5>
 				  @endif
@@ -71,15 +71,15 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Acid Inventory
+					Total Product
 				  </p>
 				  <h5
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					{{$inventory->stock}}
+					{{$productssum}}
 					<span class="text-success text-sm font-weight-bolder"
-					  >MT</span
+					  >Products</span
 					>
 				  </h5>
 				</div>
@@ -108,15 +108,15 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Sulphur Stock
+					Total Sale
 				  </p>
 				  <h5
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					{{ $stock}}
+					{{ $tsale}}
 					<span class="text-danger text-sm font-weight-bolder"
-					  >MT</span
+					  >Sales</span
 					>
 				  </h5>
 				</div>

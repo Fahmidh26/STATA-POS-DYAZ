@@ -26,7 +26,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0" href="{{ url('admin/dashboard') }}" target="_blank">
       <img src="../assets/img/favicon1.jpg" class="navbar-brand-img h-100" alt="main_logo">
-      <span class="ms-1 font-weight-bold">AARSL Dashboard</span>
+      <span class="ms-1 font-weight-bold">STATA POS</span>
     </a>
   </div>
   <hr class="horizontal dark mt-0">
