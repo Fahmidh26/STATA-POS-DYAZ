@@ -61,10 +61,12 @@ class homePageController extends Controller
 			'password' => 'required|confirmed',
 		]);
 
-		$hashedPassword = Auth::user()->password;
+		$hashedPassword = Auth::guard('admin')->user()->password;
+
+		// $hashedPassword = Auth::user()->password;
 
 		if (Hash::check($request->oldpassword,$hashedPassword)) {
-			$user = User::find(Auth::id());
+			$user = User::find(Auth::guard('admin')->user()->id);
 			$user->password = Hash::make($request->password);
 			$user->save();
 			Auth::logout();
