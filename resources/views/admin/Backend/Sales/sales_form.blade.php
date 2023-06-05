@@ -28,13 +28,13 @@
 	
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Address</label></div>
-							<div class="col"><input class="form-control " type="text" id="address" name="address" required="">
+							<div class="col"><input class="form-control " type="text" id="address" name="address">
 						</div>
 							
 						</div>
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
-							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
+							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone"></div>
 							
 						</div>
 	
