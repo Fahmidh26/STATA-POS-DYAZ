@@ -222,14 +222,14 @@
 			  class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3"
 			>
 			  <h5 class="text-white font-weight-bolder mb-4 pt-2">
-				A A Rashayan Shilpa Limited
+				STATA IT LIMITED POS
 			  </h5>
 			  <p class="text-white">
-				A A RASHAYAN SHILPA LIMITED is one of the pioneer Suphuric Acid manufacturers in Bangladesh. It prides high quality production and modern chemical technologies.
+				STATA IT POS
 			  </p>
 			  <a
 				class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto"
-				href="https://aarslbd.com"
+				href="https://statait.com"
 			  >
 				Read More
 				<i
