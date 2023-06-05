@@ -63,11 +63,12 @@
 </head>
 <body>
 
-  <table width="100%" style="background: #f7f7f7; padding:0 10px 0 10px;">
+  <table width="100%" style="background: #f7f7f7; padding:0 3px 0 3px;">
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
           {{-- <br><br> --}}
+          <br>
           <img width="200px" height="72px" src="frontend/assets/img/logo2.png" alt="">
           {{-- <h2 style="color: #ff7c00; font-size: 26px;"><strong>Bengal Automation.</strong></h2> --}}
         </td>
@@ -111,7 +112,7 @@
     </tr>
   </table>
   {{-- <br/> --}}
-<h3>Product List</h3>
+{{-- <h3>Product List</h3> --}}
   <table class="t" width="100%">
     <thead style="background-color: #17810e; color:#FFFFFF;">
       <tr class="font">
@@ -172,7 +173,8 @@
               
             @endif
             </span>
-        
+            
+            <h3><span style="color: #11790d;">Grand Total </span> <span style="font-size: 12px">{{ $sale->grand_total }}</span></h3> 
           {{-- <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3> --}}
 
            
