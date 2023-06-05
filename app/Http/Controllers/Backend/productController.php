@@ -78,29 +78,53 @@ class productController extends Controller
 	public function ProductDataUpdate(Request $request){
 
 		$product_id = $request->id;
-		$quantity = null;
+		// $quantity = null;
+		$old_img = $request->old_image;
 		
-		if($request->qty != null){
-			$quantity = $request->qty;
+		// if($request->qty != null){
+		// 	$quantity = $request->qty;
+		// }else{
+		// 	$quantity = null;
+		// }
+
+
+		if ($request->file('product_img')) {
+
+			unlink($old_img);
+			$image = $request->file('product_img');
+			$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+			Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
+			$save_url = 'upload/products/'.$name_gen;
+
+			Product::findOrFail($product_id)->update([
+				'category_id' => $request->category_id,
+				'product_name' => $request->product_name,
+				'product_code' => $request->product_code,
+				'sale_price' => $request->sale_price,
+				'cost_price' => $request->cost_price,
+				'p_vat' => $request->p_vat,
+				'product_details' => $request->product_details,
+				'product_img' => $save_url,
+				// 'qty' => $quantity,	  
+				'status' => 1,
+				'updated_at' => Carbon::now(),   
+		  ]);
+	
+	
 		}else{
-			$quantity = null;
+			Product::findOrFail($product_id)->update([
+				'category_id' => $request->category_id,
+				'product_name' => $request->product_name,
+				'product_code' => $request->product_code,
+				'sale_price' => $request->sale_price,
+				'product_details' => $request->product_details,
+				'cost_price' => $request->cost_price,
+				'p_vat' => $request->p_vat,
+				'status' => 1,
+				'updated_at' => Carbon::now(),   
+		  ]);
 		}
-		$discount = ($request->selling_price) - ($request->discount_price);
-
-         Product::findOrFail($product_id)->update([
-			'category_id' => $request->category_id,
-			'product_name' => $request->product_name,
-			'product_code' => $request->product_code,
-			'selling_price' => $request->selling_price,
-			'discount_price' => $request->discount_price,
-			'qty' => $quantity,
-		  
-		  	'discount' => null,
-	  
-			'status' => 1,
-			'created_at' => Carbon::now(),   
-      ]);
-
+	
           $notification = array(
 			'message' => 'Product Updated Successfully',
 			'alert-type' => 'success'

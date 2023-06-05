@@ -16,7 +16,7 @@
 						<h6>Category<span class="text-danger">*</span></h6>
 						<div class="controls">
 							<select name="category_id" class="form-control" required="" >
-								<option value="{{$product->category_id}}" selected="" disabled="">{{$product->category->category_name}}</option>
+								<option value="{{$product->category_id}}" selected="">{{$product->category->category_name}}</option>
 								@foreach($categories as $category)
 					 <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
 								@endforeach
@@ -27,6 +27,7 @@
 						 </div>
 							 </div>
 							 <input hidden type="text" name="id" id="id" value="{{$product->id}}">
+							 <input type="hidden" name="old_image" value="{{ $product->product_img }}">	
 							 <div class="form-group">
 								<h6>Product Name<span class="text-danger">*</span></h6>
 								<div class="controls">
