@@ -100,7 +100,7 @@
             @if ( $sale->pInvoice == NULL)
               
             @else
-            <h2><span style="color: #106908;">Prev Invoice:</span> #{{ $sale->pInvoice}}</h2>
+            <h4><span style="color: #106908;">Prev Invoice:</span> #{{ $sale->pInvoice}}</h4>
             @endif
             <strong>Sale Date:</strong> {{ $sale->sale_date }} <br>
             {{-- <strong>Expiry Date:</strong> {{ $sale->expire_date }} <br> --}}
@@ -153,11 +153,11 @@
     </tbody>
   </table>
   {{-- <br> --}}
-  <table width="100%" style=" padding:0 10px 0 10px;">
+  <table width="100%" style=" padding:0 3px 0 3px;">
     <tr>
         <td align="right" >
          
-          <hr>  
+          {{-- <hr>   --}}
           <h3><span style="color: #11790d;">Sub Total </span> <span style="font-size: 12px">{{ $sale->sub_total }}</span></h3>
             
             <span style="font-size: 12px">
@@ -177,12 +177,12 @@
 
            
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
-            <hr>
+            {{-- <hr> --}}
             @if ( $sale->p_paid_amount == null)
               <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK 0</span></h3>
               <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $sale->grand_total }}</span></h3>
             @else
-              <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK {{$sale->paid_amount}}</span></h3>
+              <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK {{$sale->p_paid_amount}}</span></h3>
               <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $sale->due_amount }}</span></h3>
             @endif
           
@@ -198,7 +198,7 @@
   {{-- <div class="thanks mt-3">
     <p>Thanks For Buying Products..!!</p>
   </div> --}}
-  <div class="authority1 float-left" style="margin-top:150px">
+  <div class="authority1 float-left" style="margin-top:120px">
   <p>-----------------------------------</p>
   <h5>Customer Signature:</h5>
   </div>
