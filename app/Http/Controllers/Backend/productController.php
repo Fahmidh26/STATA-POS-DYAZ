@@ -61,6 +61,7 @@ class productController extends Controller
 
 	public function ManageProduct(){
 
+		
 		$products = Product::latest()->get();
 		return view('admin.Backend.Product.product_view',compact('products'));
 	}
@@ -68,16 +69,9 @@ class productController extends Controller
 
 	public function EditProduct($id){
 
-		// $multiImgs = MultiImg::where('product_id',$id)->get();
-
-		// $categories = Category::latest()->get();
-		// $brands = Brand::latest()->get();
-		// $subcategory = subCategory::latest()->get();
-		// $products = Product::findOrFail($id);
-		// return view('admin.Backend.Product.product_edit', compact('products'));
+		$product = Product::findOrFail($id);
 		$categories = Category::latest()->get();
-		$brands = Brand::latest()->get();
-		return view('admin.Backend.Product.product', compact('categories','brands'));
+		return view('admin.Backend.Product.product_edit', compact('product','categories'));
 	}
 
 

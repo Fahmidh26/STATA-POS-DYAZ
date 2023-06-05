@@ -61,10 +61,10 @@
 							<div class="form-group">
 								<h6>Cost Price<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<input type="text" name="cost_price" class="form-control" required="">
-						 @error('cost_price') 
+									<input type="text" name="cost_price" class="form-control" >
+						 {{-- @error('cost_price') 
 						 <span class="text-danger">{{ $message }}</span>
-						 @enderror
+						 @enderror --}}
 							   </div>
 							</div>
 
@@ -92,20 +92,20 @@
 						 <div class="form-group">
 							<h6>Product Details<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="product_details" class="form-control" required="">
-					 @error('product_details') 
+								<input type="text" name="product_details" class="form-control" >
+					 {{-- @error('product_details') 
 					 <span class="text-danger">{{ $message }}</span>
-					 @enderror
+					 @enderror --}}
 						   </div>
 						</div>
 
 						<div class="form-group">
 							<h6>Product VAT<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="number" name="p_vat" class="form-control" required="">
-					 @error('p_vat') 
+								<input type="number" name="p_vat" class="form-control">
+					 {{-- @error('p_vat') 
 					 <span class="text-danger">{{ $message }}</span>
-					 @enderror
+					 @enderror --}}
 						   </div>
 						</div>
 
@@ -113,21 +113,15 @@
 						<div class="form-group">
 							<h6>Image<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="file" name="product_img" class="form-control" required="">
-					 @error('product_img') 
+								<input type="file" name="product_img" class="form-control" >
+					 {{-- @error('product_img') 
 					 <span class="text-danger">{{ $message }}</span>
-					 @enderror
+					 @enderror --}}
 						   </div>
 						</div>
 						
 						</div>
 			
-				
-
-	   
-
-
-	
 
 			   </div> <!-- end row  -->
 	   	 
