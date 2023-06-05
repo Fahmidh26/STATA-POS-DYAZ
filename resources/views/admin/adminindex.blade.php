@@ -295,7 +295,7 @@
 				</thead>
 				<tbody>
 
-					@foreach ($dues as $due)
+					{{-- @foreach ($dues as $due)
 				  <tr>
 					<td>
 					  <div class="d-flex px-2 py-1">
@@ -330,7 +330,7 @@
 					  </span>
 					</td>
 				  </tr>
-				  @endforeach
+				  @endforeach --}}
 				</tbody>
 			  </table>
 			</div>
