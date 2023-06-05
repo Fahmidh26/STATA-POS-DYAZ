@@ -63,7 +63,7 @@
 </head>
 <body>
 
-  <table width="100%" style="background: #f7f7f7; padding:0 3px 0 3px;">
+  <table width="100%" style="background: #f7f7f7; padding:0 0px 0 0px;">
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
@@ -111,7 +111,7 @@
         </td>
     </tr>
   </table>
-  {{-- <br/> --}}
+  <br/>
 {{-- <h3>Product List</h3> --}}
   <table class="t" width="100%">
     <thead style="background-color: #17810e; color:#FFFFFF;">
