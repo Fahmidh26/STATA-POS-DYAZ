@@ -10,7 +10,7 @@
 	  <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 		<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 			<li class="nav-item d-flex align-items-center">
-				<a href="{{ route('update.change.password') }}" class="nav-link text-body font-weight-bold px-0">
+				<a href="{{ route('admin.change.password') }}" class="nav-link text-body font-weight-bold px-0">
 				  <i class="fa-solid fa-key" style="color: #cb0c9f"></i>
 				  {{-- <span class="d-sm-inline d-none">Camera</span> --}}
 				</a>
