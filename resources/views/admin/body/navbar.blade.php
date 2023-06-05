@@ -10,8 +10,8 @@
 	  <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 		<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 			<li class="nav-item d-flex align-items-center">
-				<a href="microsoft-edge:http://103.78.254.174/doc/page/login.asp?_1680765170764" target="_blank" class="nav-link text-body font-weight-bold px-0">
-				  <i class="fa fa-video-camera me-sm-1 fa-2x" style="color: #cb0c9f"></i>
+				<a href="{{ route('update.change.password') }}" class="nav-link text-body font-weight-bold px-0">
+				  <i class="fa-solid fa-key" style="color: #cb0c9f"></i>
 				  {{-- <span class="d-sm-inline d-none">Camera</span> --}}
 				</a>
 			  </li>
@@ -27,7 +27,7 @@
 			  <span class="d-sm-inline d-none">Logout</span>
 			</a>
 		  </li>
-		  <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+		  {{-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
 			<a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
 			  <div class="sidenav-toggler-inner">
 				<i class="sidenav-toggler-line"></i>
@@ -35,13 +35,13 @@
 				<i class="sidenav-toggler-line"></i>
 			  </div>
 			</a>
-		  </li>
-		  <li class="nav-item px-3 d-flex align-items-center">
+		  </li> --}}
+		  {{-- <li class="nav-item px-3 d-flex align-items-center">
 			<a href="javascript:;" class="nav-link text-body p-0">
 			  <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
 			</a>
-		  </li>
-		  <li class="nav-item dropdown pe-2 d-flex align-items-center">
+		  </li> --}}
+		  {{-- <li class="nav-item dropdown pe-2 d-flex align-items-center">
 			<a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
 			  <i class="fa fa-bell cursor-pointer"></i>
 			</a>
@@ -113,7 +113,7 @@
 				</a>
 			  </li>
 			</ul>
-		  </li>
+		  </li> --}}
 		</ul>
 	  </div>
 	</div>
