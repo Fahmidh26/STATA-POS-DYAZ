@@ -73,7 +73,7 @@
           {{-- <h2 style="color: #ff7c00; font-size: 26px;"><strong>Bengal Automation.</strong></h2> --}}
         </td>
         <td align="right">
-          <pre class="font" style="margin: 0; line-height: 1;">
+          <pre class="font" style="margin: 2px; line-height: 1;">
             STATA IT LIMITED 
             Email: statabangladesh@gmail.com
             {{-- <br> --}}
@@ -95,11 +95,10 @@
            <strong>Address:</strong> {{  $sale->customer->address  }}
          </p>
         </td>
-        <td>
-          <p class="font" style="margin-left: 20px; margin-top:-12px">
+        <td align="right">
+          <div class="font" style="margin-top: -12px;">
             <h3><span style="color: #106908;">Invoice:</span> #{{ $sale->invoice}}</h3>
             @if ( $sale->pInvoice == NULL)
-              
             @else
             <h4><span style="color: #106908;">Prev Invoice:</span> #{{ $sale->pInvoice}}</h4>
             @endif
@@ -107,7 +106,8 @@
             {{-- <strong>Expiry Date:</strong> {{ $sale->expire_date }} <br> --}}
             <strong>Made By:</strong> {{ $sale->user->name }} 
             {{-- <br> --}}
-         </p>
+          </div>
+          
         </td>
     </tr>
   </table>
@@ -166,7 +166,7 @@
             @else
             <h3><span style="color: #169211; font-size: 12px;">Discount </span>{{ $sale->discount_per }}%</h3>
             @endif
-          <h3><span style="color: #11790d; font-size: 12px;">Grand Total </span><span style="font-size: 12px">{{ $sale->grand_total }}</span></h3>
+          <h3><span style="color: #11790d; font-size: 12px;">Grand Total </span><span style="font-size: 12px">TK {{ $sale->grand_total }}</span></h3>
           
           {{-- <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3> --}}
 
@@ -182,9 +182,8 @@
             @endif
           
         </td>
-
     </tr>
-    <br>
+    {{-- <br> --}}
     <tr>
        <td><b> Sale Details : </b>{{$sale->details}}</td> 
     </tr>
@@ -193,11 +192,11 @@
   {{-- <div class="thanks mt-3">
     <p>Thanks For Buying Products..!!</p>
   </div> --}}
-  <div class="authority1 float-left" style="margin-top:120px">
+  <div class="authority1 float-left" style="margin-top:80px">
   <p>-----------------------------------</p>
   <h5>Customer Signature:</h5>
   </div>
-  <div class="authority float-right" style="margin-top:120px">
+  <div class="authority float-right" style="margin-top:80px">
     
     {{-- <br> --}}
       <p>-----------------------------------</p>
