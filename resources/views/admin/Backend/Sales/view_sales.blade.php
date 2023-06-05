@@ -186,7 +186,7 @@
     </tr>
     <br>
     <tr>
-       <td><b> Quotation Details : </b>{{$sale->details}}</td> 
+       <td><b> Sale Details : </b>{{$sale->details}}</td> 
     </tr>
   </table>
   
@@ -197,11 +197,8 @@
   <p>-----------------------------------</p>
   <h5>Customer Signature:</h5>
   </div>
-  <div class="authority float-right">
-    <div class="seal">
-     
-      <img width="110" height="112" src="frontend/assets/img/auth_seal.png" alt="">
-    </div>
+  <div class="authority float-right" style="margin-top:120px">
+    
     {{-- <br> --}}
       <p>-----------------------------------</p>
       <h5>Authority Signature:</h5>
