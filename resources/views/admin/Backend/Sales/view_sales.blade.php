@@ -67,7 +67,7 @@
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          <br><br>
+          {{-- <br><br> --}}
           <img width="200px" height="72px" src="frontend/assets/img/logo2.png" alt="">
           {{-- <h2 style="color: #ff7c00; font-size: 26px;"><strong>Bengal Automation.</strong></h2> --}}
         </td>
@@ -75,7 +75,7 @@
             <pre class="font" >
               STATA IT LIMITED 
                Email:statabangladesh@gmail.com
-               <br>
+               {{-- <br> --}}
                Mob: 88 09678200509 
             </pre>
         </td>
@@ -97,14 +97,20 @@
         <td>
           <p class="font" style="margin-left: 20px; margin-top:-12px">
             <h3><span style="color: #106908;">Invoice:</span> #{{ $sale->invoice}}</h3>
+            @if ( $sale->pInvoice == NULL)
+              
+            @else
+            <h2><span style="color: #106908;">Prev Invoice:</span> #{{ $sale->pInvoice}}</h2>
+            @endif
             <strong>Sale Date:</strong> {{ $sale->sale_date }} <br>
             {{-- <strong>Expiry Date:</strong> {{ $sale->expire_date }} <br> --}}
-            <strong>Made By:</strong> {{ $sale->user->name }} <br>
+            <strong>Made By:</strong> {{ $sale->user->name }} 
+            {{-- <br> --}}
          </p>
         </td>
     </tr>
   </table>
-  <br/>
+  {{-- <br/> --}}
 <h3>Product List</h3>
   <table class="t" width="100%">
     <thead style="background-color: #17810e; color:#FFFFFF;">
@@ -146,7 +152,7 @@
       
     </tbody>
   </table>
-  <br>
+  {{-- <br> --}}
   <table width="100%" style=" padding:0 10px 0 10px;">
     <tr>
         <td align="right" >
@@ -167,12 +173,12 @@
             @endif
             </span>
         
-          <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3>
+          {{-- <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3> --}}
 
            
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
             <hr>
-            @if ( $sale->paid_amount == null)
+            @if ( $sale->p_paid_amount == null)
               <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK 0</span></h3>
               <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $sale->grand_total }}</span></h3>
             @else
@@ -201,7 +207,7 @@
      
       <img width="110" height="112" src="frontend/assets/img/auth_seal.png" alt="">
     </div>
-    <br>
+    {{-- <br> --}}
       <p>-----------------------------------</p>
       <h5>Authority Signature:</h5>
   </div>
