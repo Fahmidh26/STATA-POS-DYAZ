@@ -89,7 +89,7 @@ Route::get('/a', function () {
 
 
 Route::middleware('admin:admin')->group(function (){
-    Route::get('/', [Admincontroller::class, 'loginForm']);
+    Route::get('/', [Admincontroller::class, 'loginForm'])->name('/');
     Route::post('admin/login', [Admincontroller::class, 'store'])->name('admin.login');
 });
 

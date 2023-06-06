@@ -55,7 +55,9 @@ class AdminProfileController extends Controller
 
 
 	public function AdminChangePassword(){
-		return view('admin.admin_change_password');
+		$user = Auth::guard('admin')->user();
+    	// $user = Admin::find($admin);
+		return view('admin.admin_change_password',compact('user'));
 	}
 
 	
@@ -65,15 +67,16 @@ class AdminProfileController extends Controller
 			'password' => 'required|confirmed',
 		]);
 
-		$hashedPassword = Admin::find(1)->password;
-		// $hashedPassword = Auth::user()->password;
+		$user1 = Auth::guard('admin')->user();
+		$hashedPassword = $user1->password;
+
 		if (Hash::check($request->oldpassword,$hashedPassword)) {
-			$admin = Admin::find(1);
-			// $admin = Admin::find(Auth::id());
-			$admin->password = Hash::make($request->password);
-			$admin->save();
+			$user = Admin::find($user1->id);
+			// dd($user);
+			$user->password = Hash::make($request->password);
+			$user->save();
 			Auth::logout();
-			return redirect()->route('admin.logout');
+			return redirect()->route('admin.dashboard');
 		}else{
 			return redirect()->back();
 		}

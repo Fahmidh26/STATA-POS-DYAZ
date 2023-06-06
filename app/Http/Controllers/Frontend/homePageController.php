@@ -17,7 +17,7 @@ class homePageController extends Controller
 
 	public function UserLogout(){
     	Auth::logout();
-    	return Redirect()->route('login');
+    	return Redirect()->route('admin.dashboard');
     }
 
 	public function UserProfile(){
@@ -49,9 +49,8 @@ class homePageController extends Controller
     } // end method 
 
     public function UserChangePassword(){
-    	$id = Auth::guard('admin')->user()->id;
+    	$id = Auth::user()->id;
     	$user = User::find($id);
-		dd($user);
     	return view('frontend.profile.change_password',compact('user'));
     }
 
@@ -62,15 +61,11 @@ class homePageController extends Controller
 			'password' => 'required|confirmed',
 		]);
 
-		$hashedPassword = Auth::guard('admin')->user()->password;
+		$hashedPassword = Auth::user()->password;
 
-		// $hashedPassword = Auth::user()->password;
-		
 		if (Hash::check($request->oldpassword,$hashedPassword)) {
-			
-			$user = User::find(Auth::guard('admin')->user()->id);
+			$user = User::find(Auth::id());
 			$user->password = Hash::make($request->password);
-			
 			$user->save();
 			Auth::logout();
 			return redirect()->route('user.logout');
