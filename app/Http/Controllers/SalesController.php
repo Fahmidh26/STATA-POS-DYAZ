@@ -41,7 +41,7 @@ class SalesController extends Controller
         $existingInvoice = Sales::where('pInvoice', $request->pInvoice)->first();
 
         if ($existingInvoice) {
-            return redirect()->back()->withErrors(['pInvoice' => 'This pInvoice is already taken.']);
+            return redirect()->back()->withErrors(['pInvoice' => 'This Invoice is already taken.']);
         }
 
         $admin = Auth::guard('admin')->user();
