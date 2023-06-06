@@ -59,7 +59,7 @@
 
 					<div class="row mb-3">
 						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Previous Invoice</label></div>
-						<div class="col"><input class="form-control mb-3" type="text" id="pInvoice" name="pInvoice"></div>
+						<div class="col"><input class="form-control mb-3" type="text" id="pInvoice" name="pInvoice" required=""></div>
 						
 					</div>
 					{{-- <div class="row mb-3">
