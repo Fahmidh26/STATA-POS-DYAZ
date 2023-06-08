@@ -42,11 +42,11 @@
         <tr>
           <th class="text-center w-5" scope="col">SL.</th>
           <th class="text-center w-10" scope="col">Description</th>
-          <th class="text-center w-10" scope="col">Date</th>
-          <th class="text-center w-20" scope="col">Amount</th>
+          <th class="text-center w-10" scope="col">Date</th>    
           <th class="text-center w-20" scope="col">Location</th>
           <th class="text-center w-20" scope="col">Details</th>
           <th class="text-center w-10" scope="col">Status</th>
+          <th class="text-center w-20" scope="col">Amount</th>
           {{-- <th class="text-center w-10" scope="col">Paid Amount</th>
           <th class="text-center w-10" scope="col">Due Amount</th> --}}
         </tr>
@@ -61,22 +61,21 @@
           <td>{{$sl++}}</td>
           <td>{{$item->requisitionType->requisitionType}}</td>
           <td>{{$item->date}}</td>
-          <td>{{$item->amount}}</td>
           <td style="display:none;">{{$amount += $item->amount}}</td>
           <td>{{$item->location}}</td>
           <td>{{$item->details}}</td>
           <td>{{$item->status}}</td>
+          <td>{{$item->amount}}</td>
         </tr>
         @endforeach
         <tr>
           <td></td>
           <td></td>
           <td></td>
-          <td>{{$amount}}</td>
-         
           <td></td>
           <td></td>
-          <td></td> 				   
+          <td></td> 			
+          <td>{{$amount}}</td>	   
          </tr>
       </tbody>
     </table>

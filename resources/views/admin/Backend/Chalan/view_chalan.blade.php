@@ -141,8 +141,12 @@
   <br>
   <p class="font">Please acknowledge this document by giving your initial below.</p>
 
+  
+    <p class="font"> <b>Chalan Details : </b>{{$chalan->details}}</p>
+ 
 
-  <div class="authority1 float-left" style="margin-top:150px">
+
+  <div class="authority1 float-left" style="margin-top:120px">
   <p>-------------------------------</p>
   <h5>{{ $chalan->customer->customer_name }}</h5>
   </div>

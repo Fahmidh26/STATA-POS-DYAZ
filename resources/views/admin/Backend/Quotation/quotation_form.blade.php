@@ -82,7 +82,7 @@
 							<select id="item" name="item[]" class="js-example-basic-single form-control" required="">
 								<option value="" selected="" disabled="">Select Product</option>
 								@foreach($products as $product)
-									 <option data-tokens="{{ $product->product_name }}" value="{{ $product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>	
+									 <option data-tokens="{{ $product->product_name }}" value="{{ $product->id }}">{{ $product->product_name }}({{ $product->product_code }})</option>	
 								@endforeach
 							</select>
 
@@ -172,7 +172,7 @@
   
   <script>
 	$(document).ready(function(){
-		var html='<tr><td><select id="item" name="item[]" class="js-example-basic-single form-control" required=""><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option data-tokens="{{ $product->product_name }}" value="{{$product->id }}">{{ $product->product_name }} ({{$product->product_code}})</option>@endforeach</select></td><td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td><td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""><td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="remove"></td></tr>';
+		var html='<tr><td><select id="item" name="item[]" class="js-example-basic-single form-control" required=""><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option data-tokens="{{ $product->product_name }}" value="{{$product->id }}">{{ $product->product_name }} ({{ $product->product_code }})</option>@endforeach</select></td><td><input class="form-control unit_price" type="text" id="unit_cost" name="unit_cost[]" required=""></td><td><input class="form-control qty" type="text" id="qty" name="qty[]" required=""><td><input class="form-control total" type="text" id="amount" name="amount[]" value="0" readonly></td></td><td><input class="btn btn-danger" type="button" name="remove" id="remove" value="remove"></td></tr>';
 		var x =1;
 	  $("#add").click(function(){
 		$("#table_field").append(html);
