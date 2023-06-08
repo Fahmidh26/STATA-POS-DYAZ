@@ -95,7 +95,7 @@
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+					
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Procurement</th>
@@ -103,6 +103,7 @@
 											font-weight-bolder opacity-7">Type</th>
 											
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
 																					 
 										</tr>
 										@elseif ($option == "stock")
