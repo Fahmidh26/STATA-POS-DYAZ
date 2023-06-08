@@ -160,13 +160,14 @@
 				   <tr>
 					<td><h6 class="mb-0 text-sm">{{ $item->date }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->requisitionType->requisitionType }}</h6></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->amount }}</h6></td>
+					
 					<td style="display:none;">{{$amount += $item->amount}}</td>
 					<td><h6 class="mb-0 text-sm">{{ $item->location }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->details }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->lo }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->type }}</h6></td> 
-					<td><h6 class="mb-0 text-sm">{{ $item->status }}</h6></td> 				   
+					<td><h6 class="mb-0 text-sm">{{ $item->status }}</h6></td> 	
+					<td><h6 class="mb-0 text-sm">{{ $item->amount }}</h6></td>			   
 				 </tr>
 
 				 @elseif ($option == "stock")
@@ -224,11 +225,12 @@
 					 <tr>
 						<td></td>
 						<td></td>
-						<td>{{$amount}}</td>
+					
 						<td></td>
 						<td></td>
 						<td></td>
-						<td></td> 				   
+						<td></td> 	
+						<td>{{$amount}}</td>			   
 					 </tr>
 					 @elseif (($option == "L/C"))
 					 <tr>
