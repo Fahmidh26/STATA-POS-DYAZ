@@ -229,6 +229,7 @@
 						<td></td>
 						<td></td>
 						<td></td>
+						<td></td>
 						<td></td> 	
 						<td>{{$amount}}</td>			   
 					 </tr>
