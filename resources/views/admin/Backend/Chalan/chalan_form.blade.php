@@ -89,7 +89,7 @@
 							<select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" >
 								<option value="" selected="" disabled="">Select Product</option>
 								@foreach($products as $product)
-									 <option value="{{ $product->id }}">{{ $product->product_name }}</option>	
+									 <option value="{{ $product->id }}">{{ $product->product_name }}({{ $product->product_code }})</option>	
 								@endforeach
 							</select>
 						</td>
@@ -222,7 +222,7 @@
   
   <script>
 	$(document).ready(function(){
-		var html='<tr><td>	<select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option value="{{ $product->id }}">{{ $product->product_name }}</option>@endforeach</select></td><td><input class="form-control stock" type="text" id="stock" name="stock[]" value="{{$acidProducts->stock}}" required="" readonly></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
+		var html='<tr><td>	<select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option value="{{ $product->id }}">{{ $product->product_name }}({{ $product->product_code }})</option>@endforeach</select></td><td><input class="form-control stock" type="text" id="stock" name="stock[]" value="{{$acidProducts->stock}}" required="" readonly></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
 	
 		// var x =1;
 	  $("#add").click(function(){
