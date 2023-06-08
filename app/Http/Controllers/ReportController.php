@@ -57,7 +57,7 @@ class ReportController extends Controller
 		$edate = $request->edate;
         $option = $request->input('soption');
 
-        dd($option);
+        // dd($option);
         if($option == "expense"){
             $filter = collect(json_decode($request->input('filter'), true))->mapInto(Expense::class);
              if ($request->type === 'pdf') {
