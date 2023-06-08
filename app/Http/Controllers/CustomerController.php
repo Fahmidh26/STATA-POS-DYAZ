@@ -26,6 +26,12 @@ class CustomerController extends Controller
     		 
     	]);
 
+		$existingCustomer = Customer::where('phone', $request->phone)->first();
+
+        if ($existingCustomer) {
+            return redirect()->back()->withErrors(['phone' => 'This customer already exists.']);
+        }
+
         Customer::insert([
 		'customer_name' => $request->customer_name,
         'email' => $request->email,
