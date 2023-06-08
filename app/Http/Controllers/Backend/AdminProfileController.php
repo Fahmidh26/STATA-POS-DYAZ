@@ -76,7 +76,7 @@ class AdminProfileController extends Controller
 			$user->password = Hash::make($request->password);
 			$user->save();
 			Auth::logout();
-			return redirect()->route('admin.dashboard');
+			return redirect()->route('/');
 		}else{
 			return redirect()->back();
 		}
