@@ -28,8 +28,7 @@ class ReportController extends Controller
         }elseif($option == "requisition"){
             $filtered = Requisition::whereBetween('date', [$sdate, $edate])->get();
         }elseif($option == "L/C"){
-            $filtered = Purchase::with('purchaseItems')
-            ->whereBetween('purchase_date', [$sdate, $edate])
+            $filtered = Purchase::whereBetween('purchase_date', [$sdate, $edate])
             ->get();
         }elseif($option == "sale"){
             $filtered = Sales::whereBetween('sale_date', [$sdate, $edate])
@@ -74,10 +73,7 @@ class ReportController extends Controller
            }
         }elseif($option == "L/C"){
             $filter = collect(json_decode($request->input('filter'), true))
-            ->mapInto(Purchase::class)
-            ->each(function ($purchase) {
-                $purchase->load('purchaseItems');
-            });
+            ->mapInto(Purchase::class);
             if ($request->type === 'pdf') {
            $pdf = new Dompdf();
            $pdf->loadHTML(view('admin.Backend.Report.download_l_c_report_pdf',compact('sdate','edate'), ['filter' => $filter])->render());

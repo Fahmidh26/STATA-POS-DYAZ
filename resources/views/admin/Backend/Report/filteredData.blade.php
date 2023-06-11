@@ -181,7 +181,7 @@
 				
 				 @elseif ($option == "L/C")
 				 
-				 @foreach ($item->purchaseItems as $pitem)
+			
 					<tr>
 						<td><h6 class="mb-0 text-sm">{{ $item->purchase_date }}</h6></td>
 						<td><h6 class="mb-0 text-sm">{{ $item->chalan_no }}</h6></td>
@@ -191,8 +191,7 @@
 						<td><h6 class="mb-0 text-sm">{{ $item->grand_total }}</h6></td>
 						<td style="display:none;">{{$amount += $item->grand_total}}</td>
 					</tr>
-				 @endforeach			
-
+			
 
 				   @endif
 					@endforeach
