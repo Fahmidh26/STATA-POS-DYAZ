@@ -122,9 +122,10 @@
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Qty</th>
+											{{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Qty</th> --}}
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sold By</th>
 																					 
 										</tr>
 										@endif
@@ -153,13 +154,14 @@
 				   <tr>
 					<td><h6 class="mb-0 text-sm">{{ $item->date }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->requisitionType->requisitionType }}</h6></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->amount }}</h6></td>
+					
 					<td style="display:none;">{{$amount += $item->amount}}</td>
 					<td><h6 class="mb-0 text-sm">{{ $item->location }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->details }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->lo }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->type }}</h6></td> 
-					<td><h6 class="mb-0 text-sm">{{ $item->status }}</h6></td> 				   
+					<td><h6 class="mb-0 text-sm">{{ $item->status }}</h6></td> 	
+					<td><h6 class="mb-0 text-sm">{{ $item->amount }}</h6></td>			   
 				 </tr>
 
 				
@@ -183,9 +185,10 @@
 					<tr>
 						<td><h6 class="mb-0 text-sm">{{ $item->sale_date }}</h6></td>
 						<td><h6 class="mb-0 text-sm">{{ $item->customer->customer_name }}</h6></td>
-						<td><h6 class="mb-0 text-sm">Sulphuric Acid</h6></td>
-						<td><h6 class="mb-0 text-sm">{{ $sitem->qty }}</h6></td>
+						{{-- <td><h6 class="mb-0 text-sm">Sulphuric Acid</h6></td> --}}
+						{{-- <td><h6 class="mb-0 text-sm">{{ $sitem->qty }}</h6></td> --}}
 						<td><h6 class="mb-0 text-sm">{{ $item->grand_total }}</h6></td>
+						<td><h6 class="mb-0 text-sm">{{ $item->user->name }}</h6></td>
 						<td style="display:none;">{{$amount += $item->grand_total}}</td>
 					</tr>
 				 @endforeach
@@ -207,11 +210,13 @@
 					 <tr>
 						<td></td>
 						<td></td>
-						<td>{{$amount}}</td>
+					
 						<td></td>
 						<td></td>
 						<td></td>
-						<td></td> 				   
+						<td></td>
+						<td></td> 	
+						<td>{{$amount}}</td>			   
 					 </tr>
 					 @elseif (($option == "L/C"))
 					 <tr>
@@ -226,8 +231,8 @@
 					 <tr>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td></td>
+						{{-- <td></td>
+						<td></td> --}}
 						<td>{{$amount}}</td>
 					 </tr>
 					 @endif
