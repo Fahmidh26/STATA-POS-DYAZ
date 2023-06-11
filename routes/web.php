@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DealerController;
+use App\Http\Controllers\ConveyanceController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\Backend\subCategoryController;
 use App\Http\Controllers\DesignationController;
@@ -669,6 +670,7 @@ Route::prefix('product')->group(function(){
     // });
 
     Route::get('/get-data', [QuotationController::class, 'getData']);
+    Route::get('/get-employee-data', [ConveyanceController::class, 'getData']);
     Route::get('/get-data-product', [QuotationController::class, 'getDataProduct']);
     Route::get('/get-price', [QuotationController::class, 'getProductPrice']);
 
@@ -813,6 +815,25 @@ Route::prefix('product')->group(function(){
     // END Quotation
 
 
+        // Coneveyance
+        Route::prefix('coneveyance')->group(function(){
+
+            Route::get('/view', [ConveyanceController::class, 'ConveyanceView'])->name('conveyance.view');
+            
+            Route::post('/store', [ConveyanceController::class, 'ConveyanceStore'])->name('conveyance.store');
+    
+            Route::get('/manage', [ConveyanceController::class, 'ManageConveyance'])->name('conveyance.manage');
+            
+            // Route::get('/download/{id}', [QuotationController::class, 'DownloadQuotation'])->name('quotation.download.view');
+    
+            // Route::get('/details/{id}', [QuotationController::class, 'DetailQuotation'])->name('quotation.details.view');
+    
+            // Route::get('/delete/{id}', [QuotationController::class, 'QuotationDelete'])->name('quotation.delete');
+            
+            });
+        // END Coneveyance
+
+
 
         Route::prefix('chalan')->group(function(){
 
@@ -892,13 +913,7 @@ Route::prefix('product')->group(function(){
         
         Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
         
-        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
-        
-        // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
-        
-        // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
-        
-        // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+       
         
         });
 
@@ -909,8 +924,10 @@ Route::prefix('product')->group(function(){
             // EMPLOYEE
             Route::get('/employee-add', [EmployeeController::class, 'AddEmployee'])->name('employee.add');
             
-            Route::post('/expense-type/store', [ExpenseController::class, 'EnpenseTypeStore'])->name('enpenseType.store');
-            
+            Route::post('/employee-store', [EmployeeController::class, 'StoreEmployee'])->name('employee.store');
+
+            Route::get('/employee-manage', [EmployeeController::class, 'ManageEmployee'])->name('employee.manage');
+
             // DESIGNATION
             Route::get('/designation-add', [DesignationController::class, 'AddDesignation'])->name('designation.add');
             
@@ -930,17 +947,7 @@ Route::prefix('product')->group(function(){
             // return the unit price as a JSON response
             return response()->json(['unitPrice' => $unitPrice]);
             });
-    
-        
-        Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
-        
-        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
-        
-        // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
-        
-        // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
-        
-        // Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+       
         
         });
 

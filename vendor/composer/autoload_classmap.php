@@ -73,6 +73,8 @@ return array(
     'App\\Models\\Cart' => $baseDir . '/app/Models/Cart.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Chalan' => $baseDir . '/app/Models/Chalan.php',
+    'App\\Models\\ChalanItem' => $baseDir . '/app/Models/ChalanItem.php',
+    'App\\Models\\Conveyance' => $baseDir . '/app/Models/Conveyance.php',
     'App\\Models\\Coupon' => $baseDir . '/app/Models/Coupon.php',
     'App\\Models\\Customer' => $baseDir . '/app/Models/Customer.php',
     'App\\Models\\Designation' => $baseDir . '/app/Models/Designation.php',

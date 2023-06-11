@@ -19,7 +19,7 @@
 			  <div class="row">
 				<div class="col">
 
-  <form method="post" action="{{ route('product-store') }}" enctype="multipart/form-data" >
+  <form method="post" action="{{ route('employee.store') }}" enctype="multipart/form-data" >
 		 	@csrf
 
 <div class="row">
@@ -64,7 +64,7 @@
 				<div class="form-group">
 					<h6>Designation<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<select name="category_id" class="form-control"  >
+						<select name="designation" class="form-control"  >
 							<option value="" selected="" disabled="">Select Designation</option>
 							@foreach($designations as $designation)
 							<option value="{{ $designation->id }}">{{ $designation->designation }}</option>	
@@ -82,7 +82,7 @@
 				<div class="form-group">
 					<h6>Phone<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<input type="text" name="phone" class="form-control" required="">
+						<input type="number" name="phone" class="form-control" required="">
 			 {{-- @error('product_name') 
 			 <span class="text-danger">{{ $message }}</span>
 			 @enderror --}}
@@ -114,7 +114,7 @@
 				<div class="form-group">
 					<h6>Hourly Rate/Salary<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<input type="text" name="rate-salary" class="form-control" required="">
+						<input type="number" name="salary" class="form-control">
 			 {{-- @error('product_name') 
 			 <span class="text-danger">{{ $message }}</span>
 			 @enderror --}}
@@ -196,9 +196,9 @@
 
 			<div class="col-md-6">
 				<div class="form-group">
-					<h6>Picture</h6>
+					<h6>Image</h6>
 					<div class="controls">
-						<input type="file" name="picture" class="form-control" >
+						<input type="file" name="image" class="form-control" >
 						{{-- @error('picture') 
 						<span class="text-danger">{{ $message }}</span>
 						@enderror  --}}

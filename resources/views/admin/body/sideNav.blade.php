@@ -437,7 +437,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Employee</span>
 </a>
-<a class="nav-link {{ ($route == 'purchase.manage')? 'active':'' }}" href="{{ route('purchase.manage') }}">
+<a class="nav-link {{ ($route == 'employee.manage')? 'active':'' }}" href="{{ route('employee.manage') }}">
   <span class="sidenav-mini-icon"></span>
   <span class="sidenav-normal">Manage Employee</span>
   </a>
@@ -445,6 +445,14 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Designation</span>
 </a>
+<a class="nav-link {{ ($route == 'conveyance.view')? 'active':'' }}" href="{{ route('conveyance.view') }}">
+  <span class="sidenav-mini-icon"></span>
+  <span class="sidenav-normal">Add Conveyance</span>
+  </a>
+  <a class="nav-link {{ ($route == 'conveyance.manage')? 'active':'' }}" href="{{ route('conveyance.manage') }}">
+    <span class="sidenav-mini-icon"></span>
+    <span class="sidenav-normal">Manage Conveyance</span>
+    </a>
 </li>
 </ul>
 </div>

@@ -650,6 +650,8 @@ class ComposerStaticInit4b215e97eac1e612bf5a720d160d98bd
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Chalan' => __DIR__ . '/../..' . '/app/Models/Chalan.php',
+        'App\\Models\\ChalanItem' => __DIR__ . '/../..' . '/app/Models/ChalanItem.php',
+        'App\\Models\\Conveyance' => __DIR__ . '/../..' . '/app/Models/Conveyance.php',
         'App\\Models\\Coupon' => __DIR__ . '/../..' . '/app/Models/Coupon.php',
         'App\\Models\\Customer' => __DIR__ . '/../..' . '/app/Models/Customer.php',
         'App\\Models\\Designation' => __DIR__ . '/../..' . '/app/Models/Designation.php',
