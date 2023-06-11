@@ -88,10 +88,8 @@ class ReportController extends Controller
         }
         elseif($option == "sale"){
             $filter = collect(json_decode($request->input('filter'), true))
-            ->mapInto(Sales::class)
-            ->each(function ($sale) {
-                $sale->load('saleItems');
-            });
+            ->mapInto(Sales::class);
+            
             if ($request->type === 'pdf') {
            $pdf = new Dompdf();
            $pdf->loadHTML(view('admin.Backend.Report.download_sale_report_pdf',compact('sdate','edate'), ['filter' => $filter])->render());
