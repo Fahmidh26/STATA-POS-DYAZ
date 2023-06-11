@@ -186,8 +186,8 @@
 						<td><h6 class="mb-0 text-sm">{{ $item->purchase_date }}</h6></td>
 						<td><h6 class="mb-0 text-sm">{{ $item->chalan_no }}</h6></td>
 						<td><h6 class="mb-0 text-sm">{{ $item->supplier->supplier_name }}</h6></td>
-						<td><h6 class="mb-0 text-sm">{{ $pitem->product->product_name }}</h6></td>
-						<td><h6 class="mb-0 text-sm">{{ $pitem->qty }}</h6></td>
+					
+					
 						<td><h6 class="mb-0 text-sm">{{ $item->grand_total }}</h6></td>
 						<td style="display:none;">{{$amount += $item->grand_total}}</td>
 					</tr>
