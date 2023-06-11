@@ -44,8 +44,6 @@
           <th class="text-center w-5">Date</th>
           <th class="text-center w-5">L/C no.</th>
           <th class="text-center w-5">Supplier</th>
-          <th class="text-center w-5">Product</th>
-          <th class="text-center w-5">Qty</th>
           <th class="text-center w-5">Grand Total</th>                  
         </tr>
       </thead>
@@ -55,18 +53,16 @@
           $amount = 0;	
         @endphp
         @foreach($filter as $purchase)
-        @foreach ($purchase->purchaseItems as $pitem)
+     
         <tr>
             <td>{{$sl++}}</td>
 						<td>{{ $purchase->purchase_date }}</td>
             <td>{{ $purchase->chalan_no }}</td>
 						<td>{{ $purchase->supplier->supplier_name }}</td>
-						<td>{{ $pitem->product->product_name }}</td>
-						<td>{{ $pitem->qty }}</td>
 						<td>{{ $purchase->grand_total }}</td>
 						<td style="display:none;">{{$amount += $purchase->grand_total}}</td>
 					</tr>
-          @endforeach
+      
         @endforeach
         <tr>
           <td></td>
