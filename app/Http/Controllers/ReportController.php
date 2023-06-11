@@ -32,8 +32,7 @@ class ReportController extends Controller
             ->whereBetween('purchase_date', [$sdate, $edate])
             ->get();
         }elseif($option == "sale"){
-            $filtered = Sales::with('saleItems')
-            ->whereBetween('sale_date', [$sdate, $edate])
+            $filtered = Sales::whereBetween('sale_date', [$sdate, $edate])
             ->get();
         }else{
             $filtered = Expense::whereBetween('date', [$sdate, $edate])->get();
