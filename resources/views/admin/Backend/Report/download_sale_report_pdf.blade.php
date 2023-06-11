@@ -43,8 +43,7 @@
           <th class="text-center w-5" scope="col">SL.</th>
           <th class="text-center w-10" scope="col">Date</th>
           <th class="text-center w-10" scope="col">Customer</th>
-          <th class="text-center w-20" scope="col">Product</th>
-          <th class="text-center w-20" scope="col">Quantity</th>
+          <th class="text-center w-20" scope="col">Sold By</th>
           <th class="text-center w-20" scope="col">Grand Total</th>
           {{-- <th class="text-center w-10" scope="col">Status</th> --}}
           {{-- <th class="text-center w-10" scope="col">Paid Amount</th>
@@ -62,8 +61,7 @@
             <td>{{$sl++}}</td>
 						<td>{{ $sale->sale_date }}</td>
             <td>{{ $sale->customer->customer_name }}</td>
-						<td>Sulphuric Acid</td>
-						<td>{{ $sitem->qty }}</td>
+						<td>{{ $sitem->user->name }}</td>
 						<td>{{ $sale->grand_total }}</td>
             <td style="display:none;">{{$amount += $sale->grand_total}}</td>
 						{{-- <td>{{ $purchase->grand_total }}</td>
@@ -72,7 +70,6 @@
           @endforeach
         @endforeach
         <tr>
-          <td></td>
           <td></td>
           <td></td>
           <td></td>

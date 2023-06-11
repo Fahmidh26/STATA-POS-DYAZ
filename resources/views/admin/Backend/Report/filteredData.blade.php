@@ -124,8 +124,9 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
 											{{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Qty</th> --}}
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sold By</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
+										
 																					 
 										</tr>
 										@endif
@@ -172,8 +173,8 @@
 					 <td><h6 class="mb-0 text-sm">{{ $item->customer->customer_name }}</h6></td>
 					 {{-- <td><h6 class="mb-0 text-sm">Sulphuric Acid</h6></td> --}}
 					 {{-- <td><h6 class="mb-0 text-sm">{{ $sitem->qty }}</h6></td> --}}
+					 <td><h6 class="badge badge-sm bg-gradient-success">{{ $item->user->name }}</h6></td>
 					 <td><h6 class="mb-0 text-sm">{{ $item->grand_total }}</h6></td>
-					 <td><h6 class="mb-0 text-sm">{{ $item->user->name }}</h6></td>
 					 <td style="display:none;">{{$amount += $item->grand_total}}</td>
 				 </tr>
 
@@ -230,8 +231,7 @@
 					 <tr>
 						<td></td>
 						<td></td>
-						{{-- <td></td>
-						<td></td> --}}
+						<td></td>
 						<td>{{$amount}}</td>
 					 </tr>
 					 @endif
