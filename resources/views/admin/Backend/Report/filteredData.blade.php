@@ -111,7 +111,7 @@
 										@elseif ($option == "L/C")
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">L/C no.</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Purchase Number</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supplier</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
 																					 
