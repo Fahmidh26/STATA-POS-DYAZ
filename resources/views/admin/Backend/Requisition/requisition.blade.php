@@ -55,11 +55,15 @@
 
 				</div>
 				<div class="col">
-				
-				
+					
 					<div class="row mb-3">
 						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold">Details</label></div>
 						<div class="col"><textarea class="form-control" name="details" id="details" rows="5"></textarea></div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Quantity</label></div>
+						<div class="col"><input class="form-control" type="number" id="qty" name="qty" required="">
+					</div>	
 					</div>
 					<div class="row mb-3">
 						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold">Purchase</label></div>

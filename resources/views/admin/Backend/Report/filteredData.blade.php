@@ -95,15 +95,9 @@
 										@elseif ($option == "requisition")
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
-					
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Procurement</th>
-											<th class="text-uppercase text-secondary text-xxs 
-											font-weight-bolder opacity-7">Type</th>
-											
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
 																					 
 										</tr>
@@ -150,14 +144,10 @@
 				 
 				   <tr>
 					<td><h6 class="mb-0 text-sm">{{ $item->date }}</h6></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->requisitionType->requisitionType }}</h6></td>
-					
 					<td style="display:none;">{{$amount += $item->amount}}</td>
 					<td><h6 class="mb-0 text-sm">{{ $item->location }}</h6></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->details }}</h6></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->lo }}</h6></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->type }}</h6></td> 
-					<td><h6 class="mb-0 text-sm">{{ $item->status }}</h6></td> 	
+					<td><h6 class="mb-0 text-sm">{{ $item->qty }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->lo }}</h6></td>	
 					<td><h6 class="mb-0 text-sm">{{ $item->amount }}</h6></td>			   
 				 </tr>
 
@@ -201,12 +191,8 @@
 					 <tr>
 						<td></td>
 						<td></td>
-					
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td> 	
+						<td></td>	
 						<td>{{$amount}}</td>			   
 					 </tr>
 					 @elseif (($option == "L/C"))
