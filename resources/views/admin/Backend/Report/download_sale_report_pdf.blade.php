@@ -60,7 +60,7 @@
             <td>{{$sl++}}</td>
 						<td>{{ $sale->sale_date }}</td>
             <td>{{ $sale->customer->customer_name }}</td>
-						<td>{{ $item->user->name }}</td>
+						<td>{{ $sale->user->name }}</td>
 						<td>{{ $sale->grand_total }}</td>
             <td style="display:none;">{{$amount += $sale->grand_total}}</td>
 						{{-- <td>{{ $purchase->grand_total }}</td>
