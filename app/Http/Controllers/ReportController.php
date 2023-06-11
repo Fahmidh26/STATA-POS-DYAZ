@@ -72,8 +72,7 @@ class ReportController extends Controller
            $pdf->stream('Requisition-Report(' . $sdate . ') - ('. $edate . ').pdf');
            }
         }elseif($option == "L/C"){
-            $filter = collect(json_decode($request->input('filter'), true))
-            ->mapInto(Purchase::class);
+            $filter = collect(json_decode($request->input('filter'), true))->mapInto(Purchase::class);
             if ($request->type === 'pdf') {
            $pdf = new Dompdf();
            $pdf->loadHTML(view('admin.Backend.Report.download_l_c_report_pdf',compact('sdate','edate'), ['filter' => $filter])->render());
