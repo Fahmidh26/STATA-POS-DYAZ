@@ -21,6 +21,7 @@
 											<div class="">
 												<input class="form-control date mb-3" value="" type="date" id="edate" name="edate" required="">
 												<input class="form-control date mb-3" value="{{$option}}" type="hidden" id="" name="option">
+											
 											</div>
 										</div>
 										<div class="col-md-4 mb-md-0 mb-4">
@@ -29,7 +30,7 @@
 													<option value="" selected="" disabled>Select Report Type</option>
 													<option value="expense">Expense</option>
 													<option value="requisition">Requisition</option>
-													<option value="stock">Stock</option>
+											
 													<option value="L/C">L/C</option>
 													<option value="sale">Sale</option>
 												</select>
@@ -106,15 +107,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
 																					 
 										</tr>
-										@elseif ($option == "stock")
-										<tr>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cost Price</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sale Price</th>
-																					 
-										</tr>
+										
 										@elseif ($option == "L/C")
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
@@ -169,17 +162,7 @@
 					<td><h6 class="mb-0 text-sm">{{ $item->status }}</h6></td> 				   
 				 </tr>
 
-				 @elseif ($option == "stock")
-					<tr>
-						<td><h6 class="mb-0 text-sm">{{ $item->product_name }}</h6></td>
-						<td><h6 class="mb-0 text-sm">{{ $item->product_code }}</h6></td>
-						<td><h6 class="mb-0 text-sm">{{ $item->qty }}</h6></td>
-						<td><h6 class="mb-0 text-sm">{{ $item->cost_price }}</h6></td>
-						<td><h6 class="mb-0 text-sm">{{ $item->sale_price }}</h6></td>
-						<td style="display:none;">{{$totalCost += $item->cost_price*$item->qty}}</td>
-						<td style="display:none;">{{$totalSale += $item->sale_price*$item->qty}}</td>
-					</tr>
-
+				
 				 @elseif ($option == "L/C")
 				 
 				 @foreach ($item->purchaseItems as $pitem)
@@ -238,14 +221,7 @@
 						<td></td>
 						<td>{{$amount}}</td>
 					 </tr>
-					 @elseif (($option == "stock"))
-					 <tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>{{ $totalCost }}</td>
-						<td>{{ $totalSale }}</td>
-					 </tr>
+					
 					 @elseif (($option == "sale"))
 					 <tr>
 						<td></td>

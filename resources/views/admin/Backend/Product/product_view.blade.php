@@ -6,6 +6,7 @@
 	<div class="row mt-4">
 	  <div class="col-lg-12 mb-lg-0 mb-4">
 		<div class="card">
+		
 		  <div class="card-body p-3">
 			<div class="row">
 							<!-- /.box-header -->
@@ -21,10 +22,18 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sale Price</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+											<th hidden></th>
+											<th hidden></th>
 											 
 										</tr>
 									</thead>
 									<tbody>
+
+				@php
+					$tCost = 0;
+					$tSale = 0;	
+				@endphp
+
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					<td><img src="{{ asset($item->product_img) }}" style="width: 70px; height: 40px;"> </td>
@@ -33,6 +42,8 @@
 					<td><h6 class="mb-0 text-sm">{{ $item->cost_price }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->sale_price }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->qty }}</h6></td>
+					<td hidden><h6 >{{ $tSale += $item->sale_price * $item->qty}}</h6></td>
+					<td hidden><h6 >{{ $tCost += $item->cost_price * $item->qty}}</h6></td>
 					
 					<td>
 
@@ -44,7 +55,15 @@
 										 
 				 </tr>
 				  @endforeach
-									</tbody>
+				  <tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				  </tr>
+
+				</tbody>
 									 
 								  </table>
 								</div>

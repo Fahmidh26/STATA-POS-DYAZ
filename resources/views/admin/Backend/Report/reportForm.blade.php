@@ -28,7 +28,7 @@
 													<option value="" selected="" disabled>Select Report Type</option>
 													<option value="expense">Expense</option>
 													<option value="requisition">Requisition</option>
-													<option value="stock">Stock</option>
+													
 													<option value="L/C">L/C</option>
 													<option value="sale">Sale</option>
 												</select>

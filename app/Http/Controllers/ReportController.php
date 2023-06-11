@@ -27,8 +27,6 @@ class ReportController extends Controller
             $filtered = Expense::whereBetween('date', [$sdate, $edate])->get();
         }elseif($option == "requisition"){
             $filtered = Requisition::whereBetween('date', [$sdate, $edate])->get();
-        }elseif($option == "stock"){
-            $filtered = Product::where('status',1)->orderBy('product_name','ASC')->get();
         }elseif($option == "L/C"){
             $filtered = Purchase::with('purchaseItems')
             ->whereBetween('purchase_date', [$sdate, $edate])
@@ -56,8 +54,7 @@ class ReportController extends Controller
         $sdate = $request->sdate;
 		$edate = $request->edate;
         $option = $request->input('soption');
-
-        // dd($option);
+        
         if($option == "expense"){
             $filter = collect(json_decode($request->input('filter'), true))->mapInto(Expense::class);
              if ($request->type === 'pdf') {
@@ -75,16 +72,6 @@ class ReportController extends Controller
            $pdf->setPaper('A4', 'landscape');
            $pdf->render();
            $pdf->stream('Requisition-Report(' . $sdate . ') - ('. $edate . ').pdf');
-           }
-        }elseif($option == "stock"){
-            $filter = collect(json_decode($request->input('filter'), true))->mapInto(Product::class);
-            if ($request->type === 'pdf') {
-           $pdf = new Dompdf();
-           $pdf->loadHTML(view('admin.Backend.Report.download_stock_report_pdf',compact('sdate','edate'), ['filter' => $filter])->render());
-           $pdf->setPaper('A4', 'landscape');
-           $pdf->render();
-           $today = date('Y-m-d'); // Get today's date in the desired format
-           $pdf->stream('Product-Stock-Report.pdf');
            }
         }elseif($option == "L/C"){
             $filter = collect(json_decode($request->input('filter'), true))
