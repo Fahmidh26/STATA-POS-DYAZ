@@ -56,18 +56,16 @@
           $amount = 0;	
         @endphp
         @foreach($filter as $sale)
-        @foreach ($sale->saleItems as $sitem)
         <tr>
             <td>{{$sl++}}</td>
 						<td>{{ $sale->sale_date }}</td>
             <td>{{ $sale->customer->customer_name }}</td>
-						<td>{{ $sitem->user->name }}</td>
+						<td>{{ $item->user->name }}</td>
 						<td>{{ $sale->grand_total }}</td>
             <td style="display:none;">{{$amount += $sale->grand_total}}</td>
 						{{-- <td>{{ $purchase->grand_total }}</td>
 						<td style="display:none;">{{$amount += $purchase->grand_total}}</td> --}}
 					</tr>
-          @endforeach
         @endforeach
         <tr>
           <td></td>
