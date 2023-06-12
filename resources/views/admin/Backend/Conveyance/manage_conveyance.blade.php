@@ -20,7 +20,8 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Designation</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supporting Employee</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created By</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Approved By</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 											 
 										</tr>
@@ -37,8 +38,14 @@
 		<td class="text-sm font-weight-bold mb-0">{{ $item->employee->designation }}</td>
 		<td class="text-sm font-weight-bold mb-0">{{ $item->s_employee }}</td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->grand_total }} </td>
-		<td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->user->name }}</h6></td>
+		{{-- <td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->user->name }}</h6></td> --}}
 		<td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->status }}</h6></td>
+		@if ($item->status == "Pending")
+		<td><h6 class="badge badge-sm bg-gradient-danger">--</h6></td>
+		@else
+		<td><h6 class="badge badge-sm bg-gradient-primary"> {{ $item->approve->name }}</h6></td>
+		@endif
+		
 		<td width="20%">
 			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
 
