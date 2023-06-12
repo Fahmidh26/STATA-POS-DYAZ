@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Designation;
+use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image as Image;
@@ -14,8 +15,9 @@ class EmployeeController extends Controller
     public function AddEmployee(){
 		// $categories = Category::latest()->get();
 		$designations = Designation::latest()->get();
+		$departments = Department::latest()->get();
 		// return view('admin.Backend.Product.product', compact('categories','brands'));
-        return view('admin.Backend.Employee.employee', compact('designations'));
+        return view('admin.Backend.Employee.employee', compact('designations','departments'));
 	}
     
 	public function StoreEmployee(Request $request){
@@ -30,7 +32,8 @@ class EmployeeController extends Controller
 			Employee::insertGetId([
 				'f_name' => $request->first_name,
 				'l_name' => $request->last_name,
-				'designation' => $request->designation,
+				'designation_id' => $request->designation,
+				'department_id' => $request->department,
 	  
 			  'phone' => $request->phone,
 				'r_type' => $request->rate_type,
@@ -50,7 +53,8 @@ class EmployeeController extends Controller
 			Employee::insertGetId([
 				'f_name' => $request->first_name,
 				'l_name' => $request->last_name,
-				'designation' => $request->designation,
+				'designation_id' => $request->designation,
+				'department_id' => $request->department,
 	  
 			  'phone' => $request->phone,
 				'r_type' => $request->rate_type,
