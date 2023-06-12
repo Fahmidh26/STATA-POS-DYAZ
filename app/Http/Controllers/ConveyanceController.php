@@ -84,5 +84,18 @@ class ConveyanceController extends Controller
 			return view('admin.Backend.Conveyance.manage_conveyance',compact('conveyances','admin'));
 	
 		}
+
+		public function ConveyanceApprove($id){
+
+			$admin = Auth::guard('admin')->user()->id;
+			Conveyance::findOrFail($id)->update(['status' => "Approved", 'approved_by' => $admin]);
+			   $notification = array(
+				  'message' => 'Conveyance Approved',
+				  'alert-type' => 'success'
+			  );
+	  
+			  return redirect()->back()->with($notification);
+			   
+		   }
 	
 }

@@ -823,6 +823,8 @@ Route::prefix('product')->group(function(){
             Route::post('/store', [ConveyanceController::class, 'ConveyanceStore'])->name('conveyance.store');
     
             Route::get('/manage', [ConveyanceController::class, 'ManageConveyance'])->name('conveyance.manage');
+
+            Route::get('/approve/{id}', [ConveyanceController::class, 'ConveyanceApprove'])->name('conveyance.approve');
             
             // Route::get('/download/{id}', [QuotationController::class, 'DownloadQuotation'])->name('quotation.download.view');
     
