@@ -39,24 +39,25 @@
 		<td class="text-sm font-weight-bold mb-0">{{ $item->s_employee }}</td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->grand_total }} </td>
 		{{-- <td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->user->name }}</h6></td> --}}
-		<td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->status }}</h6></td>
+		
 		@if ($item->status == "Pending")
+		<td><h6 class="badge badge-sm bg-gradient-danger"> {{ $item->status }}</h6></td>
 		<td><h6 class="badge badge-sm bg-gradient-danger">--</h6></td>
 		@else
+		<td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->status }}</h6></td>
 		<td><h6 class="badge badge-sm bg-gradient-primary"> {{ $item->approve->name }}</h6></td>
 		@endif
 		
 		<td width="20%">
-			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('conveyance.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
+			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
 
 			{{-- <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sale.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download</a> --}}
 {{-- 			
 			@if ($admin->id == $item->user_id)
 			<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('sale.delete',$item->id) }}"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
 			@else
-				
 			@endif
-			 --}}
+			@endif
 
 		</td>
 							 
