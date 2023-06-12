@@ -50,6 +50,7 @@ class RequisitionController extends Controller
             'type' => $request->type,
             'lo' => $request->lo,
             'location' => $request->location,
+            'qty' => $request->qty,
             'status' => 'Unpaid',
             'created_at' => Carbon::now(),   
     

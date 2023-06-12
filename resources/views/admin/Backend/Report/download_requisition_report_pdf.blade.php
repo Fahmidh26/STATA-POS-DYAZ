@@ -173,11 +173,10 @@
     <thead style="background-color: #17810e; color:#FFFFFF;">
       <tr class="font">
         <th class="t">SL.</th>
-        <th class="t">Description</th>
         <th class="t">Date</th>
         <th class="t">Location</th>
-        <th class="t">Details</th>
-        <th class="t">Status</th>
+        <th class="t">Quantity</th>
+        <th class="t">Procurement</th>
         <th class="t">Amount</th>
         
       </tr>
@@ -190,11 +189,10 @@
      @foreach($filter as $item)
       <tr class="font">
         <td class="t" align="center">{{$sl++}}</td>
-        <td class="t" align="center"> {{$item->requisitionType->requisitionType}}</td>
         <td class="t" align="center">{{$item->date}}</td>
         <td class="t" align="center">{{$item->location}} </td>
-        <td class="t" align="center">{{$item->details}}</td>
-        <td class="t" align="center">{{$item->status}} </td>
+        <td class="t" align="center">{{$item->qty}}</td>
+        <td class="t" align="center">{{$item->lo}} </td>
         <td class="t" align="center">{{$item->amount}} </td>
         <td class="t" align="center" style="display:none;">{{$amount += $item->amount}}</td>
       </tr>
@@ -204,8 +202,7 @@
         <td class="t" align="center"></td>
         <td class="t" align="center"></td>
         <td class="t" align="center"></td>
-        <td class="t" align="center"></td>
-        <td class="t" align="center"></td> 						
+        <td class="t" align="center"></td>					
         <td class="t" align="center">{{$amount}}</td>	   
        </tr>
     </tbody>
