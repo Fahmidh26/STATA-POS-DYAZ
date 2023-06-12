@@ -84,5 +84,19 @@ class ConveyanceController extends Controller
 			return view('admin.Backend.Conveyance.manage_conveyance',compact('conveyances','admin'));
 	
 		}
+
+		// Sale Detailed View 
+	    public function DetailConveyance($id){
+
+            $conveyance = Conveyance::findOrFail($id);
+            $conveyanceitems = ConveyanceItem::where('conveyance_id',$id)->get();
+            
+
+            // dd($paysaleItem);
+
+            return view('admin.Backend.Conveyance.conveyance_details',compact('conveyance','conveyanceitems'));
+
+	} // end method 
+
 	
 }

@@ -826,7 +826,7 @@ Route::prefix('product')->group(function(){
             
             // Route::get('/download/{id}', [QuotationController::class, 'DownloadQuotation'])->name('quotation.download.view');
     
-            // Route::get('/details/{id}', [QuotationController::class, 'DetailQuotation'])->name('quotation.details.view');
+            Route::get('/details/{id}', [ConveyanceController::class, 'DetailConveyance'])->name('conveyance.details.view');
     
             // Route::get('/delete/{id}', [QuotationController::class, 'QuotationDelete'])->name('quotation.delete');
             
