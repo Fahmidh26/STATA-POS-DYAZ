@@ -32,6 +32,13 @@
 						</div>
 							
 						</div>
+
+						<div class="row mb-3">
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Department</label></div>
+							<div class="col"><input class="form-control" type="text" id="department" name="department">
+						</div>
+							
+						</div>
 					
 				</div>
 				<div class="col">
@@ -42,7 +49,7 @@
 			
 					<div class="row mb-3">
 						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold" for="details">Supporting Employee</label></div>
-						<div class="col"><textarea class="form-control" name="s_employee" id="s_employee" rows="1"></textarea></div>
+						<div class="col"><textarea class="form-control" name="s_employee" id="s_employee" rows="2"></textarea></div>
 					</div>
 
 			</div>
@@ -181,7 +188,8 @@
       // make an AJAX request to the server
       $.get('/get-employee-data', { option: selectedOption }, function(data) {
         // update the field with the response data
-        $("#designation").val(data.designation);
+        $("#designation").val(data.designation.designation);
+        // $("#department").val(data.department);
 		console.log(data);
       });
     });

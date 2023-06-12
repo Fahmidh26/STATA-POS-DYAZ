@@ -445,6 +445,10 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Designation</span>
 </a>
+<a class="nav-link {{ ($route == 'department.add')? 'active':'' }}" href="{{ route('department.add') }}">
+<span class="sidenav-mini-icon"></span>
+<span class="sidenav-normal">Add Department</span>
+</a>
 <a class="nav-link {{ ($route == 'conveyance.view')? 'active':'' }}" href="{{ route('conveyance.view') }}">
   <span class="sidenav-mini-icon"></span>
   <span class="sidenav-normal">Add Conveyance</span>

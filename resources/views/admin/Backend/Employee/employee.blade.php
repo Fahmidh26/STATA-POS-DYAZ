@@ -59,7 +59,7 @@
 		</div> <!-- end 1st row  -->
 
 <div class="row"> <!-- start 3RD row  -->
-			<div class="col-md-6">
+			<div class="col-md-3">
 
 				<div class="form-group">
 					<h6>Designation<span class="text-danger">*</span></h6>
@@ -68,6 +68,25 @@
 							<option value="" selected="" disabled="">Select Designation</option>
 							@foreach($designations as $designation)
 							<option value="{{ $designation->id }}">{{ $designation->designation }}</option>	
+							@endforeach
+						</select>
+						{{-- @error('category_id') 
+					 <span class="text-danger">{{ $message }}</span>
+					 @enderror  --}}
+					 </div>
+						 </div>
+				
+			</div> <!-- end col md 4 -->
+
+			<div class="col-md-3">
+
+				<div class="form-group">
+					<h6>Department<span class="text-danger">*</span></h6>
+					<div class="controls">
+						<select name="department" class="form-control"  >
+							<option value="" selected="" disabled="">Select Department</option>
+							@foreach($departments as $department)
+							<option value="{{ $department->id }}">{{ $department->department }}</option>	
 							@endforeach
 						</select>
 						{{-- @error('category_id') 

@@ -933,6 +933,11 @@ Route::prefix('product')->group(function(){
             
             Route::post('/designation-store', [DesignationController::class, 'DesignationStore'])->name('designation.store');
 
+            // DEPARTMENT
+            Route::get('/department-add', [DesignationController::class, 'AddDepartment'])->name('department.add');
+            
+            Route::post('/department-store', [DesignationController::class, 'DepartmentStore'])->name('department.store');
+
 
             // Route::get('/get-stock', [PurchaseController::class, 'getProductStock']);
     

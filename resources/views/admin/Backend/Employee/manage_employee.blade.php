@@ -18,6 +18,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Designation</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Department</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Blood Group</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone No.</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -30,7 +31,8 @@
 				 <tr class="align-middle text-center text-sm">
 					<td><img src="{{ asset($item->image) }}" style="width: 50px; height: 60px;"> </td>
 					<td><p class="mb-0 text-sm">{{ $item->f_name }} {{$item->l_name}}</p></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->designation }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->designation->designation }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->department->department }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->b_group }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->phone }}</h6></td>					
 					<td>
