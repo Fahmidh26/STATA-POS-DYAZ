@@ -17,4 +17,8 @@ class Conveyance extends Model
     public function user(){
     	return $this->belongsTo(Admin::class,'user_id','id');
     }
+
+    public function approve(){
+    	return $this->belongsTo(Admin::class,'approved_by','id');
+    }
 }
