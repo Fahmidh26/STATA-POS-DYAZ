@@ -49,12 +49,13 @@
 		@endif
 		
 		<td width="20%">
-			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
-
-			{{-- <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sale.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download</a> --}}
-{{-- 			
-			@if ($admin->id == $item->user_id)
-			<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('sale.delete',$item->id) }}"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
+			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('conveyance.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
+		
+			@if ($item->status == "Approved")
+				
+			@else
+			@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
+			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('conveyance.approve',$item->id) }}"><i class="fa fa-thumbs-up text-dark me-2"></i>Approve</a>
 			@else
 			@endif
 			@endif
