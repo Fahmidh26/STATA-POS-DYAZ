@@ -21,9 +21,6 @@ class CustomerController extends Controller
     	$request->validate([
     		 
     		'customer_name' => 'required',
-    	],[
-    		'phone' => 'required',
-    		 
     	]);
 
 		$existingCustomer = Customer::where('phone', $request->phone)->first();
