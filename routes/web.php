@@ -201,6 +201,8 @@ Route::prefix('category')->group(function(){
 
         Route::post('/filter', [ReportController::class, 'ReportFilter'])->name('report.filter');
 
+        Route::post('department/filter', [ReportController::class, 'ReportDepartmentFilter'])->name('report.department.filter');
+
         Route::get('/download', [ReportController::class, 'DownloadPDF'])->name('download.pdf.filter');
 
 

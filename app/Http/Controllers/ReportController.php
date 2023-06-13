@@ -46,6 +46,39 @@ class ReportController extends Controller
 
     } 
 
+// Department Wise 
+
+public function ReportDepartmentFilter(Request $request){
+
+    $option = $request->option;
+    $doption = $request->doption;
+    $sdate = $request->sdate;
+    $edate = $request->edate;
+    
+    if($option == "expense"){
+        $filtered = Expense::whereBetween('date', [$sdate, $edate])->get();
+    }elseif($option == "requisition"){
+        $filtered = Requisition::whereBetween('date', [$sdate, $edate])->get();
+    }elseif($option == "L/C"){
+        $filtered = Purchase::whereBetween('purchase_date', [$sdate, $edate])
+        ->get();
+    }elseif($option == "sale"){
+        $filtered = Sales::whereBetween('sale_date', [$sdate, $edate])
+        ->get();
+    }else{
+        $filtered = Expense::whereBetween('date', [$sdate, $edate])->get();
+    }
+
+   $notification = array(
+        'message' => 'Filterd Data Successfully',
+        'alert-type' => 'success'
+    );
+
+return view('admin.Backend.Report.filteredData' ,compact('filtered','option','sdate','edate'));
+
+} 
+// END Depertment Wise
+
 
 	public function DownloadPDF(Request $request)
     {	
