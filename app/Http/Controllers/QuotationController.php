@@ -21,7 +21,7 @@ class QuotationController extends Controller
     {       
         $banks = Bank::orderBy('bank_name','ASC')->get();
         $customers = Customer::orderBy('customer_name','ASC')->get();
-        $products = Product::where('qty','>',0)->orderBy('product_name','ASC')->get();
+        $products = Product::orderBy('product_name','ASC')->get();
         return view('admin.Backend.Quotations.quotation_form', compact('customers','products','banks'));
     }
 
