@@ -184,11 +184,12 @@
 	$("#mySelect").change(function() {
       // get the selected option value
       var selectedOption = $(this).val();
-
+		console.log(selectedOption);
       // make an AJAX request to the server
       $.get('/get-employee-data', { option: selectedOption }, function(data) {
         // update the field with the response data
         $("#designation").val(data.designation.designation);
+		$("#department").val(data.department.department);
         // $("#department").val(data.department);
 		console.log(data);
       });

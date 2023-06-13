@@ -19,11 +19,10 @@ class ConveyanceController extends Controller
 
 	public function getData(Request $request){
 
-
 		$selectedOption = $request->input('option');
 		error_log('Selected option: ' . $selectedOption);
-		$data = Employee::findOrFail($selectedOption);
-	
+		$data = Employee::with('designation','department')->findOrFail($selectedOption);
+		
 		return $data;
 	
 		}
@@ -80,7 +79,12 @@ class ConveyanceController extends Controller
 		public function ManageConveyance (){
 
 			$admin = Auth::guard('admin')->user();
-			$conveyances = Conveyance::orderBy('id','DESC')->get();
+			$match = Conveyance::where('user_id',$admin->id)->get();
+			if($admin->type=="1" || $admin->type=="2"){
+				$conveyances = Conveyance::orderBy('id','ASC')->get();
+			}elseif($match){
+				$conveyances = Conveyance::where('user_id',$admin->id)->orderBy('id','ASC')->get();
+			}
 			return view('admin.Backend.Conveyance.manage_conveyance',compact('conveyances','admin'));
 	
 		}
