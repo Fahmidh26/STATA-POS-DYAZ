@@ -59,10 +59,10 @@
 
 					<div class="row mb-3">
 						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Previous Invoice</label></div>
-						<div class="col"><input class="form-control mb-3" type="text" id="pInvoice" name="pInvoice" required="">
-							@error('pInvoice') 
+						<div class="col"><input class="form-control mb-3" type="text" id="pInvoice" name="pInvoice">
+							{{-- @error('pInvoice') 
 							<span class="text-danger">{{ $message }}</span>
-							@enderror 
+							@enderror  --}}
 			</div>
 						
 					</div>
