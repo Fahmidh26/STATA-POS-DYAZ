@@ -57,16 +57,16 @@
 
 <form method="post" action="{{ route('customer.store') }}">
 @csrf
-@error('phone') 
+{{-- @error('phone') 
 <span class="text-danger">{{ $message }}</span>
-@enderror    
+@enderror     --}}
 <div class="form-group">
 <label  class="text-uppercase text-dark text-xs font-weight-bold ">Customer Name</label>
 <div class="controls">
 <input type="text"  name="customer_name" class="form-control" > 
-@error('customer_name') 
+{{-- @error('customer_name') 
 <span class="text-danger">{{ $message }}</span>
-@enderror 
+@enderror  --}}
 </div>
 </div>
 

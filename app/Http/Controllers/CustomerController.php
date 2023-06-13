@@ -18,16 +18,16 @@ class CustomerController extends Controller
 
      public function CustomerStore(Request $request){
 
-    	$request->validate([
+    	// $request->validate([
     		 
-    		'customer_name' => 'required',
-    	]);
+    	// 	'customer_name' => 'required',
+    	// ]);
 
-		$existingCustomer = Customer::where('phone', $request->phone)->first();
+		// $existingCustomer = Customer::where('phone', $request->phone)->first();
 
-        if ($existingCustomer) {
-            return redirect()->back()->withErrors(['phone' => 'This customer already exists.']);
-        }
+        // if ($existingCustomer) {
+        //     return redirect()->back()->withErrors(['phone' => 'This customer already exists.']);
+        // }
 
         Customer::insert([
 		'customer_name' => $request->customer_name,
