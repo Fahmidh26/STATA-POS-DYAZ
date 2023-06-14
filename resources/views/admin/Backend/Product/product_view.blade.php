@@ -23,7 +23,9 @@
 											@endif
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sale Price</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
+											@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+											@endif
 											<th hidden></th>
 											<th hidden></th>
 											 
@@ -48,13 +50,12 @@
 					<td><h6 class="mb-0 text-sm">{{ $item->qty }}</h6></td>
 					<td hidden><h6 >{{ $tSale += $item->sale_price * $item->qty}}</h6></td>
 					<td hidden><h6 >{{ $tCost += $item->cost_price * $item->qty}}</h6></td>
+					@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 					<td>
-
-			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('product.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-			
-			 {{-- <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('product.delete',$item->id) }}"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a> --}}
-			
+			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('product.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>		
+			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('product.delete',$item->id) }}"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a>
 					</td>
+					@endif
 										 
 				 </tr>
 				  @endforeach
@@ -67,7 +68,9 @@
 					@endif
 					<td></td>
 					<td></td>
+					@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 					<td></td>
+					@endif
 					<td hidden></td>
 					<td hidden></td>
 				  </tr>

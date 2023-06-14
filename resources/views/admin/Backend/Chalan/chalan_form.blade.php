@@ -54,8 +54,21 @@
 					</div> --}}
 					<div class="row mb-3">
 						<div class="col-3"> <label for="details">Details</label></div>
-						<div class="col"><textarea class="form-control" name="details" id="details" rows="3"></textarea></div>
+						<div class="col"><textarea class="form-control" name="details" id="details" rows="1"></textarea></div>
 					</div>
+
+					<div class="row mb-3">
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Invoice Number</label></div>
+						<div class="col">
+							<select id="mySelect" name="sale_id" class="js-example-basic-single select2 form-control" required="">
+							<option value="" selected="" disabled="">Select Invoice</option>
+							@foreach($sales as $sale)
+									 <option value="{{ $sale->id }}">{{ $sale->invoice }}</option>	
+							@endforeach
+							<!-- More options -->
+							</select>
+						</div>
+						</div>
 					{{-- <div class="row mb-3">
 						<div class="col"><input class="form-control mb-3" type="hidden" id="auth_id" name="auth_id"  value="{{ Auth::id()}}">
 					</div>
