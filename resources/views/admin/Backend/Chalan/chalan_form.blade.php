@@ -41,9 +41,9 @@
 						<div class="row mb-3">
 							<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold">Purpose</label></div>
 							<div class="col"><select id="purpose" name="purpose" class="form-control mb-3">
-								<option value="sample">Sample</option>
-								<option value="dealership">Dealership</option>
-								<option value="sales">Sales</option>
+								<option value="Sample">Sample</option>
+								<option value="Dealership">Dealership</option>
+								<option value="Sales">Sales</option>
 								</select></div>
 						</div>
 	
