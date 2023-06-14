@@ -62,7 +62,9 @@
 					<td></td>
 					<td></td>
 					<td></td>
+					@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 					<td></td>
+					@endif
 					<td></td>
 					<td></td>
 					<td></td>
