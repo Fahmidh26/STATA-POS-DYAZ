@@ -91,6 +91,7 @@
 												<option value="4" >Dealership</option>
 												<option value="5" >B2C</option>
 												<option value="6" >Digital Marketing</option>
+												<option value="7" >HR</option>
 											</select>
 										</div>
 									</div>
