@@ -58,9 +58,9 @@
 					</div>
 
 					<div class="row mb-3">
-						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Invoice Number</label></div>
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="myy">Invoice Number</label></div>
 						<div class="col">
-							<select id="mySelect" name="sale_id" class="js-example-basic-single select2 form-control" required="">
+							<select id="myy" name="sale_id" class="js-example-basic-single select2 form-control" required="">
 							<option value="" selected="" disabled="">Select Invoice</option>
 							@foreach($sales as $sale)
 									 <option value="{{ $sale->id }}">{{ $sale->invoice }}</option>	
