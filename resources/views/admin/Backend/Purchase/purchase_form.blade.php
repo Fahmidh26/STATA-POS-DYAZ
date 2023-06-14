@@ -376,7 +376,7 @@
       $.get('/get-data-product', { option: selectedOption }, function(data) {
         // update the field with the response data
         $("#stock").val(data.qty);
-		$("#rate").val(data.sale_price);
+		$("#rate").val(data.cost_price);
       });
     });
 
@@ -392,7 +392,7 @@
 			rate.val(0);
 		}else{
 			stock.val(data.qty);
-			rate.val(data.sale_price);
+			rate.val(data.cost_price);
 		}
 			
       });
