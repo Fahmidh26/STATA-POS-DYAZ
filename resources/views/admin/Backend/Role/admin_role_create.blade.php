@@ -89,11 +89,12 @@
 			<select id="type" name="type" class="form-control" required="" >
 				<option value="1" selected="">Super Admin</option>
 				<option value="2" >Admin</option>
-				<option value="3" >B2B</option>
-				<option value="4" >Dealership</option>
-				<option value="5" >B2C</option>
-				<option value="6" >Digital Marketing</option>
-				<option value="7" >Support Team</option>
+				<option value="3" >HR</option>
+				<option value="4" >B2B</option>
+				<option value="5" >Dealership</option>
+				<option value="6" >B2C</option>
+				<option value="7" >Digital Marketing</option>
+				<option value="8" >Support Team</option>
 			</select>					
 		</div>
 	</div>
