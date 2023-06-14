@@ -34,8 +34,17 @@
 						</div>
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
-							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
+							<div class="col"><input class="form-control" type="text" id="phone" name="phone" required=""></div>
 							
+						</div>
+
+						<div class="row mb-3">
+							<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold">Purpose</label></div>
+							<div class="col"><select id="purpose" name="purpose" class="form-control mb-3">
+								<option value="sample">Sample</option>
+								<option value="dealership">Dealership</option>
+								<option value="sales">Sales</option>
+								</select></div>
 						</div>
 	
 						{{-- <div class="row mb-3">
@@ -54,7 +63,7 @@
 					</div> --}}
 					<div class="row mb-3">
 						<div class="col-3"> <label for="details">Details</label></div>
-						<div class="col"><textarea class="form-control" name="details" id="details" rows="1"></textarea></div>
+						<div class="col"><textarea class="form-control" name="details" id="details" rows="2"></textarea></div>
 					</div>
 
 					<div class="row mb-3">

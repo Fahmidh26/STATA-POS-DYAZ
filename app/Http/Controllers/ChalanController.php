@@ -51,6 +51,7 @@ class ChalanController extends Controller
             // 'total_vat' => $request->vper,
             'user_id' => $admin->id,
             'sale_id' => $request->sale_id,
+            'purpose' => $request->purpose,
             // 'p_paid_amount' => $request->paidamount,
             // 'due_amount' => $request->dueamount,
             'created_at' => Carbon::now(),   
