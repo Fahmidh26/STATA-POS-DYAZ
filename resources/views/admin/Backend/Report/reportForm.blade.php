@@ -74,6 +74,7 @@
 											<select class="form-control" name="option" id="option">
 												<option value="" selected="" disabled>Select Report Type</option>
 												<option value="conveyance">Conveyance</option>
+												<option value="sale">Sale</option>
 												{{-- <option value="requisition">Requisition</option>
 												
 												<option value="L/C">L/C</option>

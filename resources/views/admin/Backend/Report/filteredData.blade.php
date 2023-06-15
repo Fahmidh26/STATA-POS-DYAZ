@@ -71,6 +71,7 @@
 												<select class="form-control" name="option" id="option">
 													<option value="" selected="" disabled>Select Report Type</option>
 													<option value="conveyance">Conveyance</option>
+													<option value="sale">Sale</option>
 													{{-- <option value="requisition">Requisition</option>
 													
 													<option value="L/C">L/C</option>
@@ -114,7 +115,7 @@
 								<input type="hidden" name="type" value="pdf">
 								<input type="hidden" name="filter" value="{{ $filtered->toJson() }}">
 								<input type="hidden" name="soption" value="{{$option}}">
-								<input type="hidden" name="doption" value="{{$doption}}">
+								{{-- <input type="hidden" name="doption" value="{{$doption}}"> --}}
 								<input value="{{$sdate}}" type="hidden" name="sdate">
 								<input value="{{$edate}}" type="hidden" name="edate">
 								<div class="">
@@ -145,6 +146,7 @@
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+											<th style="display:none;"></th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>

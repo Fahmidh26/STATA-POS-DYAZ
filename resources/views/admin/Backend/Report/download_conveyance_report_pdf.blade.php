@@ -179,13 +179,13 @@
             $sl = 1;
           $amount = 0;
         @endphp
-     @foreach($filter as $sale)
+     @foreach($filter as $conveyance)
       <tr class="font">
         <td class="t" align="center">{{$sl++}}</td>
-        <td class="t" align="center">{{$sale->date}}</td>
+        <td class="t" align="center">{{$conveyance->date}}</td>
         {{-- <td class="t" align="center">{{$sale->customer->customer_name}}</td>
         <td class="t" align="center">{{$sale->user->name}} </td> --}}
-        <td class="t" align="center">{{$sale->grand_total}} </td>
+        <td class="t" align="center">{{$conveyance->grand_total}} </td>
         {{-- <td class="t" align="center" style="display:none;">{{$amount += $sale->grand_total}}</td> --}}
    
       </tr>

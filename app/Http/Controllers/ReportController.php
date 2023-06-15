@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Conveyance;
 use App\Models\Expense;
 use App\Models\Product;
@@ -56,13 +57,18 @@ public function ReportDepartmentFilter(Request $request){
     $doption = $request->doption;
     $sdate = $request->sdate;
     $edate = $request->edate;
-    $admin = Auth::guard('admin')->user();
+    $admin = Admin::where('type', $doption)->pluck('id');
+
+    // $admin = Admin::where('type', $doption)->get();
+
+  
 
     if($option == "sale"){
-        $filtered = Sales::whereBetween('sale_date', [$sdate, $edate])
+        $filtered = Sales::whereBetween('sale_date', [$sdate, $edate])->whereIn('user_id', $admin)
         ->get();
+        // dd($filtered);
     }elseif($option == "conveyance"){
-        $filtered = Conveyance::whereBetween('date', [$sdate, $edate])->where('user_id', $doption)
+        $filtered = Conveyance::whereBetween('date', [$sdate, $edate])->whereIn('user_id', $admin)
         ->get();
     }else{
         $filtered = Expense::whereBetween('date', [$sdate, $edate])->get();
@@ -86,7 +92,7 @@ return view('admin.Backend.Report.filteredData' ,compact('filtered','option','sd
         $sdate = $request->sdate;
 		$edate = $request->edate;
         $option = $request->input('soption');
-        $doption = $request->input('doption');
+        // $doption = $request->input('doption');
         
         // dd($option);
         if($option == "expense"){
