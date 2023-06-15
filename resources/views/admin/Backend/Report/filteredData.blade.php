@@ -147,7 +147,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
-											<th style="display:none;"></th>
+											{{-- <th style="display:none;"></th> --}}
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
 											
@@ -157,7 +157,7 @@
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
-										
+											{{-- <th style="display:none;"></th> --}}
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Procurement</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
@@ -182,7 +182,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Purchase Number</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supplier</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
-											<th style="display:none;"></th>
+											{{-- <th style="display:none;"></th> --}}
 																					 
 										</tr>
 										@elseif ($option == "sale")
@@ -277,8 +277,8 @@
 					<tr>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td>{{$amount}}</td>
+						<td>Total: <b>{{$amount}}</b></td>
+						<td></td>	
 						<td></td>
 						<td></td>			   
 					 </tr>
@@ -286,19 +286,21 @@
 					 <tr>
 						<td></td>
 						<td></td>
-						<td>{{$amount}}</td>	
+							
 						<td></td>
 						<td></td>
+						<td>Total: <b>{{$amount}}</b></td>
 						<td></td>	
 								   
 					 </tr>
 					 @elseif ($option == "conveyance")
 					 <tr>
 						<td></td>
-						<td>{{$amount}}</td>	
+					
 						<td></td>
 						<td></td>
 						<td></td>
+						<td>Total: <b>{{$amount}}</b></td>	
 						<td></td>
 						<td></td>	
 						<td></td>	
@@ -309,8 +311,8 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td>{{$amount}}</td>
+					
+						<td>TOtal: <b>{{$amount}}</b></td>
 					 </tr>
 					
 					 @elseif (($option == "sale"))
@@ -318,8 +320,8 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td>{{$amount}}</td>
+						{{-- <td></td> --}}
+						<td>Total: <b>{{$amount}}</b></td>
 					 </tr>
 					 @endif
 									  </tbody>
