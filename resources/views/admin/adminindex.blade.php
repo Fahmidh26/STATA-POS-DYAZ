@@ -341,13 +341,33 @@
 	  <div class="col-lg-4 col-md-6">
 		<div class="card h-100">
 		  <div class="card-header pb-0">
-			<h6>Orders overview</h6>
-			<p class="text-sm">
-			  <!-- <i class="fa fa-arrow-up text-success" aria-hidden="true"></i> -->
-			  <span class="font-weight-bold">Today's</span> Delivery
-			</p>
+			<h6>Today's Overview</h6>
+			
 		  </div>
-		  <div class="card-body p-3">
+
+		  <table style="width: 90%; margin-left:5%" class="table table-bordered">
+			<thead>
+			  <tr>
+				<th scope="col">Total Sale</th>
+				<td scope="col">####</td>
+			  </tr>
+			  <tr>
+				<th scope="col">Total Purchase</th>
+				<td scope="col">####</td>
+			  </tr>
+			  <tr>
+				<th scope="col">Last Sale</th>
+				<td scope="col">Total Purchase</td>
+			  </tr>
+			  <tr>
+				<th scope="col">Total Sale</th>
+				<td scope="col">Total Purchase</td>
+			  </tr>
+			</thead>
+		
+		  </table>
+
+		  {{-- <div class="card-body p-3">
 			<div class="timeline timeline-one-side">
 		
 			@foreach ($schedules as $schedule)
@@ -369,7 +389,7 @@
 			@endforeach
 			
 		</div>
-		  </div>
+		  </div> --}}
 		</div>
 	  </div>
 

@@ -146,8 +146,8 @@
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
-											<th style="display:none;"></th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+											<th style="display:none;"></th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
 											
@@ -157,6 +157,7 @@
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
+										
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Procurement</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
@@ -166,6 +167,7 @@
 										@elseif ($option == "conveyance")
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+											
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employee</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Designation</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supporting Employee</th>
@@ -180,6 +182,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Purchase Number</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supplier</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+											<th style="display:none;"></th>
 																					 
 										</tr>
 										@elseif ($option == "sale")
@@ -188,6 +191,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sold By</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
+											<th style="display:none;"></th>
 										
 																					 
 										</tr>
@@ -216,8 +220,8 @@
 				 
 				   <tr>
 					<td><h6 class="mb-0 text-sm">{{ $item->date }}</h6></td>
-					<td style="display:none;">{{$amount += $item->amount}}</td>
 					<td><h6 class="mb-0 text-sm">{{ $item->location }}</h6></td>
+					<td style="display:none;">{{$amount += $item->amount}}</td>
 					<td><h6 class="mb-0 text-sm">{{ $item->qty }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->lo }}</h6></td>	
 					<td><h6 class="mb-0 text-sm">{{ $item->amount }}</h6></td>			   
@@ -273,6 +277,7 @@
 					<tr>
 						<td></td>
 						<td></td>
+						<td></td>
 						<td>{{$amount}}</td>
 						<td></td>
 						<td></td>			   
@@ -281,12 +286,27 @@
 					 <tr>
 						<td></td>
 						<td></td>
+						<td>{{$amount}}</td>	
+						<td></td>
 						<td></td>
 						<td></td>	
-						<td>{{$amount}}</td>			   
+								   
+					 </tr>
+					 @elseif ($option == "conveyance")
+					 <tr>
+						<td></td>
+						<td>{{$amount}}</td>	
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>	
+						<td></td>	
+								   
 					 </tr>
 					 @elseif (($option == "L/C"))
 					 <tr>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -295,6 +315,7 @@
 					
 					 @elseif (($option == "sale"))
 					 <tr>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
