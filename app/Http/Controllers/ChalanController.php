@@ -26,11 +26,12 @@ class ChalanController extends Controller
 		// $adminData = Admin::find($id);
         $banks = Bank::orderBy('bank_name','ASC')->get();
         $customers = Customer::orderBy('customer_name','ASC')->get();
+        $sales = Sales::orderBy('id','ASC')->get();
         // $inventory = TodaysProduction::sum('qty');
         $acidProducts = AcidProduct::find(1);
         // $acidProducts = AcidProduct::orderBy('product_name','ASC')->first();
         $products = Product::where('qty','>',0)->orderBy('product_name','ASC')->get();
-        return view('admin.Backend.Chalan.chalan_form', compact('customers','banks','acidProducts','products'));
+        return view('admin.Backend.Chalan.chalan_form', compact('customers','banks','acidProducts','products','sales'));
     }
 
     public function ChalanStore(Request $request)
@@ -49,6 +50,8 @@ class ChalanController extends Controller
             // 'discount_per' => $request->dper,
             // 'total_vat' => $request->vper,
             'user_id' => $admin->id,
+            'sale_id' => $request->sale_id,
+            'purpose' => $request->purpose,
             // 'p_paid_amount' => $request->paidamount,
             // 'due_amount' => $request->dueamount,
             'created_at' => Carbon::now(),   

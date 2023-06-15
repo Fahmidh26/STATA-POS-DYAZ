@@ -34,8 +34,17 @@
 						</div>
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
-							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
+							<div class="col"><input class="form-control" type="text" id="phone" name="phone" required=""></div>
 							
+						</div>
+
+						<div class="row mb-3">
+							<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold">Purpose</label></div>
+							<div class="col"><select id="purpose" name="purpose" class="form-control mb-3">
+								<option value="Sample">Sample</option>
+								<option value="Dealership">Dealership</option>
+								<option value="Sales">Sales</option>
+								</select></div>
 						</div>
 	
 						{{-- <div class="row mb-3">
@@ -54,8 +63,21 @@
 					</div> --}}
 					<div class="row mb-3">
 						<div class="col-3"> <label for="details">Details</label></div>
-						<div class="col"><textarea class="form-control" name="details" id="details" rows="3"></textarea></div>
+						<div class="col"><textarea class="form-control" name="details" id="details" rows="2"></textarea></div>
 					</div>
+
+					<div class="row mb-3">
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="myy">Invoice Number</label></div>
+						<div class="col">
+							<select id="myy" name="sale_id" class="js-example-basic-single select2 form-control" required="">
+							<option value="" selected="" disabled="">Select Invoice</option>
+							@foreach($sales as $sale)
+									 <option value="{{ $sale->id }}">{{ $sale->invoice }}</option>	
+							@endforeach
+							<!-- More options -->
+							</select>
+						</div>
+						</div>
 					{{-- <div class="row mb-3">
 						<div class="col"><input class="form-control mb-3" type="hidden" id="auth_id" name="auth_id"  value="{{ Auth::id()}}">
 					</div>
