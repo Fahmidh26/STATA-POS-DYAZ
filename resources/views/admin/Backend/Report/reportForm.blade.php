@@ -55,7 +55,7 @@
 			<div class="card">
 				<div class="card-body p-3">
 					<div class="form-filter">
-						<form method="post" action="{{ route('report.filter') }}">
+						<form method="post" action="{{ route('report.department.filter') }}">
 							@csrf
 							<div class="card-body p-2">
 								<div class="row">
@@ -73,25 +73,26 @@
 										<div>
 											<select class="form-control" name="option" id="option">
 												<option value="" selected="" disabled>Select Report Type</option>
-												<option value="expense">Expense</option>
-												<option value="requisition">Requisition</option>
+												<option value="conveyance">Conveyance</option>
+												{{-- <option value="requisition">Requisition</option>
 												
 												<option value="L/C">L/C</option>
-												<option value="sale">Sale</option>
+												<option value="sale">Sale</option> --}}
 											</select>
 										</div>
 									</div>
 									<div class="col-md-3 mb-md-0 mb-4">
 										<div>
-											<select class="form-control" name="department" id="doption">
+											<select class="form-control" name="doption" id="doption">
 												<option value="" selected="" disabled>Select Department</option>
-												<option value="1" >Super Admin</option>
+												<option value="1">Super Admin</option>
 												<option value="2" >Admin</option>
-												<option value="3" >B2B</option>
-												<option value="4" >Dealership</option>
-												<option value="5" >B2C</option>
-												<option value="6" >Digital Marketing</option>
-												<option value="7" >HR</option>
+												<option value="3" >HR</option>
+												<option value="4" >B2B</option>
+												<option value="5" >Dealership</option>
+												<option value="6" >B2C</option>
+												<option value="7" >Digital Marketing</option>
+												<option value="8" >Support Team</option>
 											</select>
 										</div>
 									</div>

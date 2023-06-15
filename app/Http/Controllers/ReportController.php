@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Conveyance;
 use App\Models\Expense;
 use App\Models\Product;
 use App\Models\Purchase;
@@ -10,6 +11,7 @@ use App\Models\Requisition;
 use App\Models\Sales;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -54,27 +56,26 @@ public function ReportDepartmentFilter(Request $request){
     $doption = $request->doption;
     $sdate = $request->sdate;
     $edate = $request->edate;
-    
-    if($option == "expense"){
-        $filtered = Expense::whereBetween('date', [$sdate, $edate])->get();
-    }elseif($option == "requisition"){
-        $filtered = Requisition::whereBetween('date', [$sdate, $edate])->get();
-    }elseif($option == "L/C"){
-        $filtered = Purchase::whereBetween('purchase_date', [$sdate, $edate])
-        ->get();
-    }elseif($option == "sale"){
+    $admin = Auth::guard('admin')->user();
+
+    if($option == "sale"){
         $filtered = Sales::whereBetween('sale_date', [$sdate, $edate])
+        ->get();
+    }elseif($option == "conveyance"){
+        $filtered = Conveyance::whereBetween('date', [$sdate, $edate])->where('user_id', $doption)
         ->get();
     }else{
         $filtered = Expense::whereBetween('date', [$sdate, $edate])->get();
     }
 
+    // dd($doption);
+
    $notification = array(
-        'message' => 'Filterd Data Successfully',
+        'message' => 'Filterd Department Wise Data Successfully',
         'alert-type' => 'success'
     );
 
-return view('admin.Backend.Report.filteredData' ,compact('filtered','option','sdate','edate'));
+return view('admin.Backend.Report.filteredData' ,compact('filtered','option','sdate','edate','doption'));
 
 } 
 // END Depertment Wise
@@ -85,7 +86,9 @@ return view('admin.Backend.Report.filteredData' ,compact('filtered','option','sd
         $sdate = $request->sdate;
 		$edate = $request->edate;
         $option = $request->input('soption');
+        $doption = $request->input('doption');
         
+        // dd($option);
         if($option == "expense"){
             $filter = collect(json_decode($request->input('filter'), true))->mapInto(Expense::class);
              if ($request->type === 'pdf') {
@@ -114,13 +117,13 @@ return view('admin.Backend.Report.filteredData' ,compact('filtered','option','sd
            $pdf->stream('L-C-Report(' . $sdate . ') - (' . $edate . ').pdf');
            }
         }
-        elseif($option == "sale"){
+        elseif($option == "conveyance"){
             $filter = collect(json_decode($request->input('filter'), true))
-            ->mapInto(Sales::class);
+            ->mapInto(Conveyance::class);
             
             if ($request->type === 'pdf') {
            $pdf = new Dompdf();
-           $pdf->loadHTML(view('admin.Backend.Report.download_sale_report_pdf',compact('sdate','edate'), ['filter' => $filter])->render());
+           $pdf->loadHTML(view('admin.Backend.Report.download_conveyance_report_pdf',compact('sdate','edate'), ['filter' => $filter])->render());
            $pdf->setPaper('A4', 'landscape');
            $pdf->render();
            $pdf->stream('Sale-Report(' . $sdate . ') - (' . $edate . ').pdf');

@@ -4,7 +4,7 @@
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<div class="card">
 					<div class="card-body p-3">
 						<div class="form-filter">
@@ -38,7 +38,64 @@
 										</div>
 										<div class="col-md-12">
 											<div class="">
-												<input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="Filter Schedule">
+												<input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="Filter Report">
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body p-3">
+						<div class="form-filter">
+							<form method="post" action="{{ route('report.department.filter') }}">
+								@csrf
+								<div class="card-body p-2">
+									<div class="row">
+										<div class="col-md-3 mb-md-0 mb-4">
+											<div class="">
+												<input class="form-control date mb-3" value="" type="date" id="sdate" name="sdate" required="">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="">
+												<input class="form-control date mb-3" value="" type="date" id="edate" name="edate" required="">
+											</div>
+										</div>
+										<div class="col-md-3 mb-md-0 mb-4">
+											<div>
+												<select class="form-control" name="option" id="option">
+													<option value="" selected="" disabled>Select Report Type</option>
+													<option value="conveyance">Conveyance</option>
+													{{-- <option value="requisition">Requisition</option>
+													
+													<option value="L/C">L/C</option>
+													<option value="sale">Sale</option> --}}
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3 mb-md-0 mb-4">
+											<div>
+												<select class="form-control" name="doption" id="doption">
+													<option value="" selected="" disabled>Select Department</option>
+													<option value="1">Super Admin</option>
+													<option value="2" >Admin</option>
+													<option value="3" >HR</option>
+													<option value="4" >B2B</option>
+													<option value="5" >Dealership</option>
+													<option value="6" >B2C</option>
+													<option value="7" >Digital Marketing</option>
+													<option value="8" >Support Team</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="">
+												<input class="btn bg-gradient-dark mb-0" type="submit" name="save" id="save" value="Filter Data">
 											</div>
 										</div>
 									</div>
@@ -57,6 +114,7 @@
 								<input type="hidden" name="type" value="pdf">
 								<input type="hidden" name="filter" value="{{ $filtered->toJson() }}">
 								<input type="hidden" name="soption" value="{{$option}}">
+								<input type="hidden" name="doption" value="{{$doption}}">
 								<input value="{{$sdate}}" type="hidden" name="sdate">
 								<input value="{{$edate}}" type="hidden" name="edate">
 								<div class="">
@@ -68,6 +126,7 @@
 				</div>
 			</div>
 		</div>
+
 	
 	
 
@@ -100,6 +159,17 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Procurement</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
 																					 
+										</tr>
+
+										@elseif ($option == "conveyance")
+										<tr>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employee</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Designation</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supporting Employee</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Approved By</th>	 
 										</tr>
 										
 										@elseif ($option == "L/C")
@@ -149,6 +219,24 @@
 					<td><h6 class="mb-0 text-sm">{{ $item->qty }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->lo }}</h6></td>	
 					<td><h6 class="mb-0 text-sm">{{ $item->amount }}</h6></td>			   
+				 </tr>
+
+				 @elseif ($option == "conveyance")
+				 
+				   <tr>
+					<td><h6 class="mb-0 text-sm">{{ $item->date }}</h6></td>
+					<td style="display:none;">{{$amount += $item->grand_total}}</td>
+					<td><h6 class="mb-0 text-sm">{{ $item->employee->f_name }} {{ $item->employee->l_name }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->employee->designation->designation }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->s_employee }}</h6></td>	
+					<td><h6 class="mb-0 text-sm">TK {{ $item->grand_total }} </h6></td>	
+					@if ($item->status == "Pending")		   
+					<td><h6 class="mb-0 text-sm"> {{ $item->status }}</h6></td>			   
+					<td><h6 class="mb-0 text-sm">--</h6></td>
+					@else
+					<td><h6 class="mb-0 text-sm"> {{ $item->status }}</h6></td>			   
+					<td><h6 class="mb-0 text-sm"> {{ $item->approve->name }}</h6></td>
+					@endif			   
 				 </tr>
 
 				 @elseif ($option == "sale")
