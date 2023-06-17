@@ -52,6 +52,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Models\AcidProduct;
+use App\Models\Purchase;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,11 +125,14 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
         $banks = Bank::where('balance','>', 1)->get();
         // $stock = Product::sum('qty');
         $tsale = Sales::count();
+        $totalsale = Sales::sum('grand_total');
+        $totalpurchase = Purchase::sum('grand_total');
         $inventory = AcidProduct::find(1);
         $todays_production = TodaysProduction::orderBy('id','DESC')->first();
+        $lastSale = Sales::orderBy('id','DESC')->first();
         $today = Carbon::today();
         $schedules = Schedule::whereDate('schedule_date', $today)->orderBy('time', 'ASC')->get();
-        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum'));
+        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum','totalsale','totalpurchase','lastSale'));
     })->name('admin.dashboard');
 });
 
@@ -206,7 +210,6 @@ Route::prefix('category')->group(function(){
         Route::get('/download', [ReportController::class, 'DownloadPDF'])->name('download.pdf.filter');
 
 
-        
         Route::post('/store', [SalesController::class, 'SalesStore'])->name('sales.store');
 
         Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');

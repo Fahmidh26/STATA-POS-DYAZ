@@ -349,19 +349,15 @@
 			<thead>
 			  <tr>
 				<th scope="col">Total Sale</th>
-				<td scope="col">####</td>
+				<td scope="col">TK <b>{{$totalsale}}</b></td>
 			  </tr>
 			  <tr>
 				<th scope="col">Total Purchase</th>
-				<td scope="col">####</td>
+				<td scope="col">TK <b>{{$totalpurchase}}</b></td>
 			  </tr>
 			  <tr>
 				<th scope="col">Last Sale</th>
-				<td scope="col">Total Purchase</td>
-			  </tr>
-			  <tr>
-				<th scope="col">Total Sale</th>
-				<td scope="col">Total Purchase</td>
+				<td scope="col">TK <b>{{$lastSale->grand_total}}</b></td>
 			  </tr>
 			</thead>
 		
