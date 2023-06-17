@@ -122,12 +122,12 @@
 						
 						</div>
 			
-
 			   </div> <!-- end row  -->
-	   	 
-							   <div class="text-xs-right">
-	   <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
-							   </div>
+			   @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
+						<div class="text-xs-right">
+	  						 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
+						</div>
+				@endif
 						   </form>
 			  </div>
 			</div>
