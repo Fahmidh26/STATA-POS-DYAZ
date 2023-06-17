@@ -473,7 +473,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
       </svg>
   </div>
   
-  <span class="nav-link-text ms-1">COnveyance</span>
+  <span class="nav-link-text ms-1">Conveyance</span>
   </a>
   <div class="collapse hide" id="hr" style="">
   <ul class="nav ms-4 ps-3">
