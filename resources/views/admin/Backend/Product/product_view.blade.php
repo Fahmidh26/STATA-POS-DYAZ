@@ -15,7 +15,9 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr class="align-middle text-center">
+											@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+											@endif
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code</th>
 											@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
@@ -40,7 +42,9 @@
 
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
+					@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 					<td><img src="{{ asset($item->product_img) }}" style="width: 70px; height: 40px;"> </td>
+					@endif
 					<td><p class="mb-0 text-sm">{{ $item->product_name }}</p></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->product_code }}</h6></td>
 					@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
@@ -60,7 +64,9 @@
 				 </tr>
 				  @endforeach
 				  <tr>
+					@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 					<td></td>
+					@endif
 					<td></td>
 					<td></td>
 					@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
