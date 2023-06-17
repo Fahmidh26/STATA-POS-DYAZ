@@ -250,7 +250,7 @@
 		  <div class="card-header pb-0">
 			<div class="row">
 			  <div class="col-lg-6 col-7">
-				<h6 style="font-size:25px; text-align: center;">Product Stock</h6>
+				<h6 style="font-size:25px; text-align: right;">Product Stock</h6>
 				<!-- <p class="text-sm mb-0">
 				  <i class="fa fa-check text-info" aria-hidden="true"></i>
 				  <span class="font-weight-bold ms-1">30 done</span> this
