@@ -266,7 +266,7 @@
 				<thead>
 				  <tr>
 					<th
-					  class="text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
 					  Product
 					</th>
