@@ -55,7 +55,7 @@
 		   @if ($item->status == "Approved")
 			   
 		   @else
-		   @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
+		   @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
 		   <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('conveyance.approve',$item->id) }}"><i class="fa fa-thumbs-up text-dark me-2"></i>Approve</a>
 		   @else
 		   @endif

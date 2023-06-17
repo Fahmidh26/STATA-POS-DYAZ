@@ -114,7 +114,7 @@
 				  <div class="col">
 				  </div>
 				  <div class="col">
-					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Sale">
+					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Conveyance">
 				  </div>
 				  <div class="col">
 				  </div>
