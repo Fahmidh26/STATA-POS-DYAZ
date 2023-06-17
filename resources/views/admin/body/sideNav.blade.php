@@ -150,10 +150,12 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <div class="collapse hide" id="product" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item ">
+@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 <a class="nav-link {{ ($route == 'product.add')? 'active':'' }}" href="{{ route('product.add') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Product</span>
 </a>
+@endif
 <a class="nav-link {{ ($route == 'manage-product')? 'active':'' }}" href="{{ route('manage-product') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Product</span>
