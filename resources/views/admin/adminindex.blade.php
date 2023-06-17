@@ -247,6 +247,16 @@
 	  <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
 		
 		<div class="card">
+		  <div class="card-header pb-0">
+			<div class="row">
+			  <div class="col-lg-6 col-7">
+				<h6 style="font-size:25px; text-align: right;">Product Stock</h6>
+				<!-- <p class="text-sm mb-0">
+				  <i class="fa fa-check text-info" aria-hidden="true"></i>
+				  <span class="font-weight-bold ms-1">30 done</span> this
+				  month
+				</p> -->
+			  </div>
 
 		  <div class="card-body px-0 pb-2">
 			<div class="table-responsive">
@@ -317,6 +327,7 @@
 		</div>
 	
 	  </div>
+	  @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 	  <div class="col-lg-4 col-md-6">
 		<div class="card h-100">
 		  <div class="card-header pb-0">
@@ -367,7 +378,7 @@
 		  </div> --}}
 		</div>
 	  </div>
-
+	  @endif
 	</div>
 
 	@include('admin.body.footer')
