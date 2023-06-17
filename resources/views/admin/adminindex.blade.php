@@ -245,12 +245,12 @@
 
 	<div class="row my-4">
 	  <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-		@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="5"))
+		
 		<div class="card">
 		  <div class="card-header pb-0">
 			<div class="row">
 			  <div class="col-lg-6 col-7">
-				<h6 style="font-size:25px; text-align: center;">Total Sales & Delivery of Sulphuric Acid</h6>
+				<h6 style="font-size:25px; text-align: center;">Product Stock</h6>
 				<!-- <p class="text-sm mb-0">
 				  <i class="fa fa-check text-info" aria-hidden="true"></i>
 				  <span class="font-weight-bold ms-1">30 done</span> this
@@ -268,29 +268,25 @@
 					<th
 					  class="text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Company Name
+					  Product
 					</th>
 					<th
 					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Advance/MT
+					  Code
 					</th>
 					<th
 					  class="ttext-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Delivery/MT
+					Price
 					</th>
 
 					<th
 					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
-					  Due/MT
+					  Stock
 					</th>
-					<th
-					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					>
-					  Balance Tk.
-					</th>
+					
 				  </tr>
 				</thead>
 				<tbody>
@@ -336,7 +332,7 @@
 			</div>
 		  </div>
 		</div>
-		@endif
+	
 	  </div>
 	  <div class="col-lg-4 col-md-6">
 		<div class="card h-100">
