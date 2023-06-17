@@ -418,6 +418,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
 
 @if($hr == true)
+@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#hr" class="nav-link  {{ ($prefix == '/hr')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -461,6 +462,35 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </ul>
 </div>
 </li>
+@else
+<li class="nav-item">
+  <a data-bs-toggle="collapse" href="#hr" class="nav-link  {{ ($prefix == '/hr')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
+  <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#3a416f" height="800px" width="800px" version="1.1" id="Layer_1" viewBox="0 0 360 360" xml:space="preserve">
+      <g id="XMLID_91_">
+        <path id="XMLID_92_" d="M355.606,334.381l-63.854-63.855C315.619,241.903,330,205.107,330,165.013c0-90.981-74.019-165-165-165   S0,74.031,0,165.013s74.019,165,165,165c40.107,0,76.914-14.391,105.541-38.271l63.853,63.853   c2.929,2.929,6.768,4.393,10.606,4.393s7.678-1.464,10.606-4.393C361.465,349.736,361.465,340.239,355.606,334.381z M95,235.013   c0-38.663,31.341-70,70-70c-24.852,0-45.001-20.147-45.001-45.001S140.148,75.013,165,75.013s45,20.146,45,44.999   s-20.148,45.001-45,45.001c38.658,0,69.999,31.337,69.999,70H95z"/>
+      </g>
+      </svg>
+  </div>
+  
+  <span class="nav-link-text ms-1">COnveyance</span>
+  </a>
+  <div class="collapse hide" id="hr" style="">
+  <ul class="nav ms-4 ps-3">
+  <li class="nav-item">
+  <a class="nav-link {{ ($route == 'conveyance.view')? 'active':'' }}" href="{{ route('conveyance.view') }}">
+    <span class="sidenav-mini-icon"></span>
+    <span class="sidenav-normal">Add Conveyance</span>
+    </a>
+    <a class="nav-link {{ ($route == 'conveyance.manage')? 'active':'' }}" href="{{ route('conveyance.manage') }}">
+      <span class="sidenav-mini-icon"></span>
+      <span class="sidenav-normal">Manage Conveyance</span>
+      </a>
+  </li>
+  </ul>
+  </div>
+  </li>
+@endif
 @else
 @endif
 
