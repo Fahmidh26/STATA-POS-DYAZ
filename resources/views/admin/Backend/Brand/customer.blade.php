@@ -17,8 +17,8 @@
 										
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address </th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email Price</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone %</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 											 
 										</tr>
@@ -33,8 +33,8 @@
   <td>{{ $item->phone }}</td>
   <td>
 <a href="{{ route('customer.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-<a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
- <i class="fa fa-trash"></i></a>
+{{-- <a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+ <i class="fa fa-trash"></i></a> --}}
   </td>
              
  </tr>

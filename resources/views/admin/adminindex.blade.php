@@ -249,14 +249,6 @@
 		<div class="card">
 		  <div class="card-header pb-0">
 			<div class="row">
-			  <div class="col-lg-6 col-7">
-				<h6 style="font-size:25px; text-align: right;">Product Stock</h6>
-				<!-- <p class="text-sm mb-0">
-				  <i class="fa fa-check text-info" aria-hidden="true"></i>
-				  <span class="font-weight-bold ms-1">30 done</span> this
-				  month
-				</p> -->
-			  </div>
 
 		  <div class="card-body px-0 pb-2">
 			<div class="table-responsive">
@@ -274,7 +266,7 @@
 					  Customer
 					</th>
 					<th
-					  class="ttext-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
 					>
 					Total
 					</th>
@@ -284,6 +276,11 @@
 					>
 					  Sold By
 					</th>
+					<th
+					class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+				  >
+					Action
+				  </th>
 					
 				  </tr>
 				</thead>
@@ -311,14 +308,17 @@
 						{{$item->grand_total}}
 					  </span>
 					</td>
-					</td>
+					
 					<td class="align-middle text-center text-sm">
 					  <span class="badge badge-sm bg-gradient-primary">
 						{{$item->user->name}}
 					  </span>
 					</td>
+					<td class="align-middle text-center text-sm">
+						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
 					</td>
 				  </tr>
+				</a>
 				  @endforeach
 				</tbody>
 			  </table>

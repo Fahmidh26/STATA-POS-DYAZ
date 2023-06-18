@@ -23,6 +23,8 @@ class CustomerController extends Controller
 		$validator = Validator::make($request->all(), [
 			'customer_name' => 'required',
 			'phone' => 'nullable|unique:customers',
+		], [
+			'phone.unique' => 'The phone number already exists.',
 		]);
 	
 		if ($validator->fails()) {
