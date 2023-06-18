@@ -308,7 +308,7 @@
 						{{$item->grand_total}}
 					  </span>
 					</td>
-					
+
 					<td class="align-middle text-center text-sm">
 					  <span class="badge badge-sm bg-gradient-primary">
 						{{$item->user->name}}
@@ -325,6 +325,8 @@
 			</div>
 		  </div>
 		</div>
+	</div>
+</div>
 	
 	  </div>
 	  @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
