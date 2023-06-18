@@ -117,9 +117,9 @@ class CustomerController extends Controller
 	
 		} // end method
 
-		public function DealerView(){
-			$dealers = Dealer::latest()->get();
-			return view('admin.Backend.Dealer.dealer' ,compact('dealers'));
-		}
+		// public function DealerView(){
+		// 	$dealers = Dealer::latest()->get();
+		// 	return view('admin.Backend.Dealer.dealer' ,compact('dealers'));
+		// }
 	
 }

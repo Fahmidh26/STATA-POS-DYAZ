@@ -34,15 +34,6 @@ class SalesController extends Controller
 
     public function SalesStore(Request $request)
     {   
-        // $validateData = $request->validate([
-        //     'pInvoice' => 'required',
-        // ]);
-
-        // $existingInvoice = Sales::where('pInvoice', $request->pInvoice)->first();
-
-        // if ($existingInvoice) {
-        //     return redirect()->back()->withErrors(['pInvoice' => 'This Invoice is already taken.']);
-        // }
 
         $admin = Auth::guard('admin')->user();
 

@@ -11,7 +11,6 @@ use App\Http\Controllers\Backend\LocationController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\productController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\CustomerController;
@@ -30,6 +29,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ChalanController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\User\AllUserController;
@@ -220,6 +220,15 @@ Route::prefix('category')->group(function(){
         
         Route::get('/filter', [SalesController::class, 'SaleFilterView'])->name('sale.filter.view');
 
+      
+        });
+
+    // RETURN
+    Route::prefix('return')->group(function(){
+
+        Route::get('/form', [ReturnController::class, 'ReturnSearch'])->name('return.search');
+
+        Route::get('/details/{id}', [ReturnController::class, 'DetailReturn'])->name('return.details.view');
       
         });
 
