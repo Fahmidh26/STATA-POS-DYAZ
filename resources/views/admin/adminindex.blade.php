@@ -329,7 +329,6 @@
 </div>
 	
 	  </div>
-	  @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 	  <div class="col-lg-4 col-md-6">
 		<div class="card h-100">
 		  <div class="card-header pb-0">
@@ -380,7 +379,7 @@
 		  </div> --}}
 		</div>
 	  </div>
-	  @endif
+	 
 	</div>
 
 	@include('admin.body.footer')
