@@ -132,7 +132,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
         $todays_production = TodaysProduction::orderBy('id','DESC')->first();
         $lastSale = Sales::orderBy('id','DESC')->first();
         $today = Carbon::today();
-        $last5Sales = Sales::orderBy('id','DESC')->limit(5)->get();
+        $last5Sales = Sales::orderBy('id','DESC')->limit(10)->get();
         $schedules = Schedule::whereDate('schedule_date', $today)->orderBy('time', 'ASC')->get();
         return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum','totalsale','totalpurchase','lastSale','last5Sales'));
     })->name('admin.dashboard');

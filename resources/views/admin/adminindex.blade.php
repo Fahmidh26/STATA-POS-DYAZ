@@ -316,6 +316,7 @@
 					</td>
 					<td class="align-middle text-center text-sm">
 						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
+						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sale.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download</a>
 					</td>
 				  </tr>
 				</a>
