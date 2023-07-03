@@ -43,7 +43,7 @@
 				<div class="col">
 					<div class="row mb-3">
 						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Sale Date</label></div>
-						<div class="col"><input class="form-control" value="{{$sale->sale_date}}" type="date" id="saleDate" name="saleDate" required=""></div>
+						<div class="col"><input class="form-control" value="{{$sale->sale_date}}" type="date" id="returnDate" name="returnDate" required=""></div>
 					</div>
 					{{-- <div class="row mb-3">
 						<div class="col-2"><label>Details</label></div>
@@ -59,6 +59,8 @@
 						<div class="col"><input value="{{$sale->pInvoice}}" class="form-control mb-3" type="text" id="pInvoice" name="pInvoice"></div>
 						
 					</div>
+
+					<input type="text" name="sale_id" id="sale_id" hidden value="{{$sale->id}}">
 					{{-- <div class="row mb-3">
 						<div class="col"><input class="form-control mb-3" type="hidden" id="auth_id" name="auth_id"  value="{{ Auth::id()}}">
 					</div>
@@ -112,13 +114,13 @@
 					<div class="col-4">
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold">Sub Total</label></div>
-							<div class="col"><span><input class="form-control" type="text" name="subtotal" id="subtotal" value="{{$sale->sub_total}}" readonly></span>
+							<div class="col"><span><input class="form-control" type="text" name="subtotal" id="subtotal" value="0" readonly></span>
 							</div>
 						</div>
 					
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Grand Total</label></div>
-							<div class="col"><input value="{{$sale->grand_total}}" class="form-control" type="text" name="grandtotal" id="grandtotal" readonly>
+							<div class="col"><input class="form-control" type="text" name="grandtotal" id="grandtotal" value="0" readonly>
 							</div>
 						</div>
 						{{-- <div class="row mb-2">

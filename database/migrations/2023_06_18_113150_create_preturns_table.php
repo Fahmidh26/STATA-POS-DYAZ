@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('preturns', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sale_id');
-            $table->date('sale_date');
+            $table->date('return_date');
             $table->text('details')->nullable();
             $table->float('sub_total',8,2);  
             $table->float('grand_total',8,2);  

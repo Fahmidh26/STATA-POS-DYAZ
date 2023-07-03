@@ -101,9 +101,9 @@
 						</div>
 
 						<div class="form-group">
-							<h6>Product VAT<span class="text-danger">*</span></h6>
+							<h6>Quantity<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="number" value="{{$product->p_vat}}" name="p_vat" class="form-control">
+								<input type="number" value="{{$product->qty}}" name="qty" class="form-control">
 					 {{-- @error('p_vat') 
 					 <span class="text-danger">{{ $message }}</span>
 					 @enderror --}}
