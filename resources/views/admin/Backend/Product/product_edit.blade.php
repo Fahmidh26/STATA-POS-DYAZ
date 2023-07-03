@@ -100,6 +100,7 @@
 						   </div>
 						</div>
 
+						@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 						<div class="form-group">
 							<h6>Quantity<span class="text-danger">*</span></h6>
 							<div class="controls">
@@ -109,6 +110,7 @@
 					 @enderror --}}
 						   </div>
 						</div>
+						@endif
 
 						
 						<div class="form-group">
