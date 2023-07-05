@@ -18,14 +18,14 @@ class SupplierController extends Controller
 
     	$request->validate([
     		'supplier_name' => 'required',
-    		'address' => 'required',
-            'mobile' => 'required',
-            'email_address' => 'required',
+    		// 'address' => 'required',
+            // 'mobile' => 'required',
+            // 'email_address' => 'required',
     	],[
     		'supplier_name.required' => 'Please Enter Supplier Name',
-            'address.required' => 'Please Enter Address',
-            'mobile.required' => 'Please Enter Mobile Number',
-            'email_address.required' => 'Please Email Address',
+            // 'address.required' => 'Please Enter Address',
+            // 'mobile.required' => 'Please Enter Mobile Number',
+            // 'email_address.required' => 'Please Email Address',
     	]);
 
 	    Supplier::insert([
