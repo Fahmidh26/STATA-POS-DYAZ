@@ -16,7 +16,7 @@
 									<thead>
 										<tr>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Chalan No.</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">L/C Number</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supplier </th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">LC Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
