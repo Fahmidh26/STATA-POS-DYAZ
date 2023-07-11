@@ -881,7 +881,7 @@ Route::prefix('product')->group(function(){
             //   });
         
             
-            Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
+            // Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
             
             // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
             
@@ -929,7 +929,7 @@ Route::prefix('product')->group(function(){
             });
     
         
-        Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
+        // Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
         
        
         

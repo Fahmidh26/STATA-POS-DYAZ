@@ -36,9 +36,9 @@
 				<div class="col-sm-4">
 				<div class="">
 				<input type="number" name="mobile" class="form-control" id="supplier_mobile" value="">
-				@error('mobile') 
+				{{-- @error('mobile') 
 				<span class="text-danger">{{ $message }}</span>
-				@enderror 
+				@enderror  --}}
 				</div>
 				</div>
 				</div>
@@ -47,9 +47,9 @@
 				<div class="col-sm-4">
 				<div class="">
 				<input type="email" class="form-control" name="email_address" id="email_address" value="">
-				@error('email_address') 
+				{{-- @error('email_address') 
 				<span class="text-danger">{{ $message }}</span>
-				@enderror 
+				@enderror  --}}
 				</div>
 				</div>
 				<label for="zip" class="col-sm-2 text-right col-form-label">Zip code:</label>
@@ -73,9 +73,9 @@
 				<div class="col-sm-4">
 				<div class="">
 				<textarea name="address" id="address" class="form-control" ></textarea>
-				@error('address') 
+				{{-- @error('address') 
 				<span class="text-danger">{{ $message }}</span>
-				@enderror 
+				@enderror  --}}
 				</div>
 				</div>
 
